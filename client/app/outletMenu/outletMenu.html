@@ -1,0 +1,146 @@
+
+ <div data-spy="scroll" data-target="#myScrollspy" data-offset="20">
+
+<div class="container">
+  <div class="row">
+    <nav class="col-md-2" id="myScrollspy">
+      <ul class="nav nav-pills nav-stacked">
+        <li ng-repeat="category in categories" ng-if="category.items.length > 0">
+ 					<a ng-href="#{{category.id}}">{{category.name}}</a>
+ 		</li>
+      </ul>
+    </nav>
+    <div class="col-md-6">
+      <div id="{{category.id}}" ng-repeat="category in categories">
+ <accordion close-others="false">
+    <accordion-group heading="{{item.name}}" ng-repeat="item in category.items">
+    <div class="row">
+    	<div class="col-md-2">
+    		<img ng-if="item.image != null" src="item.image" class="img-rounded" width="50px" height="30px"></img>
+    		 <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="img-rounded" width="50px" height="30px"></img>
+
+    	</div>
+    	<div class='col-md-10'>
+    		<div align="right" class="itemPrice">
+    		   <div>
+    		   	<span>Price: <i class="fa fa-inr"></i></span> 
+    		   	{{item.price}}
+    		   </div>
+    		   <div ng-if="item.price_half!== null || 0 || undefined">
+    		   <span>Price Half: <i class="fa fa-inr"></i></span>
+    		   {{item.price_half}}
+    		   </div>
+
+    		</div>
+    	</div>
+    </div>
+    <div class="col-md-offset-2">
+    	{{item.description}}
+    </div>
+      <button ng-if="item.price_half=== null || 0 || undefined" type="button" ng-click="addItemToCart(item)" class="btn btn-primary btn-block">Add to Cart</button>
+
+       <button ng-if="item.price_half !== null || 0 || undefined" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" ng-click="checkForOptions(item)">Add to Cart</button>
+     
+
+
+    </accordion-group>
+  </accordion>
+        <span ng-if="category.items.length > 0"></br></span>
+	   </div>
+       </div>
+       <div class="col-md-4">
+       	<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div align="right" class="panel-heading">Your Cart <span align="right"><img src="assets/images/cartIcon.png" width="50px" height="50px"></span></div>
+  <div class="panel-body">
+  	<div ng-if="!cart || cart.length==0">
+  	</div>
+
+  	<div ng-if="cart.length > 0">
+  	<div>Your Cart</div>
+  	<ul class="list-group">
+  <li class="list-group-item cartdata modalOption row" ng-repeat="item in cart">
+  	<span class="col-md-6">{{item.name}}<span ng-if="item.isHalf">(Half)</span></span>
+  	<span class="row col-md-6"><span class="btn glyphicon glyphicon-plus-sign col-md-2 addButton"></span><span class="col-md-2">{{item.quantity}}</span><span class="btn glyphicon glyphicon-minus-sign col-md-2 subButton"></span></span>
+  </li>
+  
+</ul>
+<div class="row itemPrice">
+  <span class="col-md-6">Subtotal: </span><div class="col-md-6" align="right">{{OrderBill.totalBaseAmount}}</div>
+  <span class="col-md-6">Tax: </span><div class="col-md-6" align="right">{{OrderBill.taxAmount}}</div>
+
+</div>
+
+</div>
+</div>
+
+
+<div class="panel-footer" align="right">
+	Total: {{OrderBill.totalAmount}}
+</div>
+<div class="continueButton"><button type="button" class="btn btn-primary  btn-block" ng-click="proceedToCheckOut()">Continue</button></div>
+</div>
+       </div>
+        
+
+    </div>
+
+
+</div>
+
+<!-- Trigger the modal with a button -->
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+ -->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title"><span class="modalHeading">Good Choice! Let's Customize ? </span></h4>
+      </div>
+      <div class="modal-body">
+        <md-radio-group ng-model="selectedValue">
+      <div class="row">
+        <div flex layout='row' layout-padding layout-align="start center" >
+          <div flex style="max-width:100px;">
+            <span class='modalOption'>Half</span>
+          </div>
+          <md-radio-button flex
+              value="0.5"
+              class="md-primary" >
+            <i class="fa fa-inr"></i>{{itemSelected.price_half}}
+          </md-radio-button>
+        </div>
+      </div>
+      <div class="row">
+        <div flex layout='row' layout-padding layout-align="start center" >
+          <div flex style="max-width:100px;">
+           <span class='modalOption'>Full</span>
+          </div>
+          <md-radio-button flex
+              value="1"
+              class="md-primary" >
+            <i class="fa fa-inr"></i>{{itemSelected.price}}
+          </md-radio-button>
+        </div>
+      </div>
+    </md-radio-group>
+</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addItemToCart(itemSelected, 1, selectedValue)">Confirm</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+</div>
+
+
+
+
+

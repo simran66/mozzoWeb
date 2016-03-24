@@ -1,0 +1,119 @@
+
+
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+
+.ranging{
+  width: 25px;
+  height: 25px;
+
+}
+
+.searchBar{
+  width: 40px !important;
+}
+
+.circle-singleline {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 40px;
+    text-align: center;
+    background: #ffebe6;
+    vertical-align: middle;  
+     display: table-cell;
+     padding-top: 0.5em;  
+    color: #000;
+}
+
+ul.rating {
+    display: inline-block;
+}
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+}
+.rating .filled {
+    color: red;
+}
+
+.carddemoBasicUsage .card-media {
+  background-color: #999999; 
+}
+.hearts{
+   margin-left: 10px;
+   color: grey;
+}
+
+.loves{
+  color: red;
+}
+.placeTitle{
+color:  black;
+text-transform: uppercase;
+font-weight: bold;
+}
+
+.footerText{
+  color: grey;
+  vertical-align: baseline;
+  margin-bottom: 0px;
+  height:100%;
+  line-height: 100%;
+    white-space: nowrap;
+    padding-top: 20px !important;
+
+}
+
+.column {
+  width: 50%;
+  position: absolute;
+  top: 120px;
+  bottom: 0;
+  display: inline-block;
+  float: left;
+  color: #fff;
+}
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul li {
+  padding: 0 24px;
+  line-height: 30px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  background: #eee;
+}
+
+.searchButton{
+  line-height: 0px !important;
+  min-height:  0px !important;
+  min-width:  0px !important;
+}
+
+
+
+
+.overlay {
+  background: rgba(0,0,0,.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+

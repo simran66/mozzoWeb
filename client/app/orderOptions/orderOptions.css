@@ -1,0 +1,94 @@
+.opt{
+	background-color: yellow;
+}
+
+.cc-selector input{
+    margin:0;padding:0;
+    -webkit-appearance:none;
+       -moz-appearance:none;
+            appearance:none;
+}
+.visa{background-image:url(../../assets/images/dineIn3.png);}
+.mastercard{background-image:url(../../assets/images/takeaway.png);}
+.delivery{background-image:url(../../assets/images/delivery3.png);}
+
+.cc-selector input:active +.drinkcard-cc{opacity: .2;}
+.cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100px;height:70px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+/* Extras */
+a:visited{color:#888}
+a{color:#444;text-decoration:none;}
+p{margin-bottom:.3em;}
+
+
+
+
+.container {
+    margin-top: 10px;
+
+}
+
+.menu-container{
+   /* margin-left: 2%;
+    margin-right: 5%;*/
+}
+
+.itemPrice{
+    text-transform: capitalize;
+    color: green;
+}
+
+.modalHeading{
+    text-align: center;
+    text-transform: capitalize;
+    color: #ccc;
+}
+
+.modalOption{
+    color:rgba(33,150,243,0.87);
+}
+
+.cartdata{
+    margin: 5px !important;
+    padding: 5px !important;
+}
+
+.list-group-item .btn{
+    font-size: 18px !important
+}
+
+.continueButton{
+  margin-top:20px;
+  
+}
+
+
+.addButton{
+   color: green;
+}
+
+.subButton{
+  color: red;
+}

@@ -1,0 +1,151 @@
+<!-- <div>This is the orderOptions view.</div>
+ -->
+
+ <div class="container">
+ 	<div class="row cc-selector" ng-init="user.serviceType=0">
+ 		<div class="col-md-8">
+ 		<div class="col-md-4" align="center">
+            <input id="dineIn" type="radio" name="serviceType" value="0" ng-model="user.serviceType"/>
+        <label class="drinkcard-cc visa" for="dineIn"></label>
+             
+ 		</div>
+ 		<div class="col-md-4" align="center">
+ 			<input id="takeAway" type="radio" name="serviceType" value="1" ng-model="user.serviceType"/>
+        <label class="drinkcard-cc mastercard" for="takeAway"></label>
+             
+ 		</div>
+ 		<div class="col-md-4" align="center">
+ 			<input id="delivery" type="radio" name="serviceType" value="2" ng-model="user.serviceType"/>
+            <label class="drinkcard-cc delivery" for="delivery"></label>
+ 		</div>
+
+
+ 		<div layout="column" layout-padding ng-cloak ng-if="user.serviceType==0">
+  <br/>
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+      <label>Name</label>
+<!--       <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+ -->      <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+<!--       <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+ -->      <input ng-model="user.phone" type="text" placeholder="Phone Number">
+    </md-input-container>
+    <md-input-container class="md-block">
+      <!-- Use floating placeholder instead of label -->
+<!--       <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+ -->      <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+    </md-input-container>
+ <!--    <md-input-container md-no-float class="md-block">
+      <input ng-model="user.address" type="text" placeholder="Address" >
+   </md-input-container> -->
+ 
+  </md-content>
+</div>
+
+	<div layout="column" layout-padding ng-cloak ng-if="user.serviceType==1">
+  <br/>
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+      <label>Name</label>
+<!--       <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+ -->      <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+<!--       <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+ -->      <input ng-model="user.phone" type="text" placeholder="Phone Number">
+    </md-input-container>
+    <md-input-container class="md-block">
+      <!-- Use floating placeholder instead of label -->
+<!--       <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+ -->      <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+    </md-input-container>
+   
+  </md-content>
+</div>
+
+	<div layout="column" layout-padding ng-cloak ng-if="user.serviceType==2">
+  <br/>
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <!-- Use floating label instead of placeholder -->
+      <label>Name</label>
+<!--       <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+ -->      <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+<!--       <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+ -->      <input ng-model="user.address1" type="text" placeholder="House number">
+    </md-input-container>
+    <md-input-container class="md-block">
+      <!-- Use floating placeholder instead of label -->
+<!--       <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+ -->      <input ng-model="user.address2" type="text" placeholder="Street Name" ng-required="true">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <input ng-model="user.address" type="text" placeholder="Locality" >
+<!--       <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+ -->    </md-input-container>
+     <md-input-container md-no-float class="md-block">
+      <input ng-model="user.address3" type="text" placeholder="Area" >
+<!--       <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+ -->    </md-input-container>
+     <md-input-container md-no-float class="md-block">
+      <input ng-model="user.address4" type="text" placeholder="City" >
+<!--       <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+ -->    </md-input-container>
+   
+  </md-content>
+</div>
+<!-- <div class="row">
+   <section class="col-md-12">
+      <md-button class="md-raised md-primary btn-block" type="submit" ng-click="">Submit</md-button>
+  </section>
+</div> -->
+
+ 	</div>
+
+
+ 	<div class="col-md-4">
+      <div ng-include src=" 'components/cart/cart.html' ">
+      </div>
+  <div class="continueButton"><button type="button" class="btn btn-primary  btn-block" ng-click="makePayment()">Continue</button></div>
+ 	</div>
+ </div>
+<!-- 
+ <div class="row">
+ 	<!-- <form name="" ng-submit="">
+ 	</form> -->
+<!-- <div layout="column" layout-padding ng-cloak>
+  <br/>
+  <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <label>Name</label>
+      <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
+      <input ng-model="user.name" type="text">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
+      <input ng-model="user.phone" type="text" placeholder="Phone Number">
+    </md-input-container>
+    <md-input-container class="md-block">
+      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
+      <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
+    </md-input-container>
+    <md-input-container md-no-float class="md-block">
+      <input ng-model="user.address" type="text" placeholder="Address" >
+      <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
+    </md-input-container>
+    <md-input-container class="md-icon-float md-icon-right md-block">
+      <label>Donation Amount</label>
+      <md-icon md-svg-src="img/icons/ic_card_giftcard_24px.svg"></md-icon>
+      <input ng-model="user.donation" type="number" step="0.01">
+      <md-icon md-svg-src="img/icons/ic_euro_24px.svg"></md-icon>
+    </md-input-container>
+  </md-content>
+</div> -->
+ </div>
+ </div>

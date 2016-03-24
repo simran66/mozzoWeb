@@ -1,0 +1,49 @@
+
+
+.container {
+    margin-top: 10px;
+
+}
+
+.menu-container{
+   /* margin-left: 2%;
+    margin-right: 5%;*/
+}
+
+.itemPrice{
+    text-transform: capitalize;
+    color: green;
+}
+
+.modalHeading{
+    text-align: center;
+    text-transform: capitalize;
+    color: #ccc;
+}
+
+.modalOption{
+    color:rgba(33,150,243,0.87);
+}
+
+.cartdata{
+    margin: 5px !important;
+    padding: 5px !important;
+}
+
+.list-group-item .btn{
+    font-size: 18px !important
+}
+
+.continueButton{
+  margin-top:20px;
+  
+}
+
+
+.addButton{
+   color: green;
+}
+
+.subButton{
+  color: red;
+}
