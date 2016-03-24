@@ -93,7 +93,8 @@ angular.module('angularTestApp')
     return {
       restrict: 'E',
       scope: { results: '=' },
-      template: '<div id="custom-search-input"><div class="input-group col-md-12"><input type="text" class="  search-query form-control" placeholder="Search" /> </div> </div>',
+      //template: '<div id="custom-search-input"><div class="input-group col-md-12"><input type="text" class="  search-query form-control" placeholder="Search" /> </div> </div>',
+      template: '<md-input-container md-colspan="8" class="md-input-focused"><label>Location</label><input></md-input-container>',
       link: function(scope, iElement, iAttrs) {
 
         // Setup Google Auto-complete Service

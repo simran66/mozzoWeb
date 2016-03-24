@@ -22,8 +22,8 @@ angular.module('angularTestApp', [
     // delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
      $mdThemingProvider.theme('default')
-      .primaryPalette('blue')
-      .accentPalette('yellow');
+      .primaryPalette('deep-orange')
+      .accentPalette('orange');
 
     $mdThemingProvider.theme('login')
       .primaryPalette('brown')
@@ -37,17 +37,20 @@ angular.module('angularTestApp', [
 $authProvider.loginUrl = 'https://www.mozzobytes.com/api/auth/login/';
 $authProvider.signupUrl = 'https://www.mozzobytes.com/api/auth/registration/';
 
+
+
 $authProvider.facebook({
   name: 'facebook',
   url: 'https://www.mozzobytes.com/api/auth/facebook/',
-  authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
-  redirectUri:'http://localhost:9000/',
-  requiredUrlParams: ['display', 'scope', 'access_token', 'code'],
-  scope: ['email'],
-  scopeDelimiter: ',',
-  display: 'popup',
+   authorizationEndpoint: 'https://www.facebook.com/v2.5/dialog/oauth',
+   redirectUri:'http://localhost:9000/',
+   requiredUrlParams: ['display', 'scope'],
+   scope: ['email'],
+   scopeDelimiter: ',',
+   display: 'popup',
   type: '2.0',
-  clientId: '1256802200999873',
+  //clientId: '1256802200999873',
+  clientId:'1481166418851439',
   popupOptions: { width: 580, height: 400 }
 });
 

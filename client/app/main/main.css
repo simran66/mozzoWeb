@@ -1,4 +1,4 @@
-.thing-form {
+/*.thing-form {
     margin: 20px 0;
 }
 
@@ -31,4 +31,28 @@
 
 .navbar-text {
     margin-left: 15px;
+}*/
+
+
+.container-fluid{
+    background-image: url("/assets/images/bg9.jpg");
+    height: 100vh;
+    z-index: -1;
+    filter:alpha(0.1);
 }
+
+.locator{
+    margin-top: 40vh;
+    z-index: 2;
+    position: relative;
+}
+
+
+md-input-container {
+    display: block;
+    position: relative;
+    padding: 2px;
+    margin: 18px 0;
+    vertical-align: middle;
+}
+
