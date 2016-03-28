@@ -1,4 +1,4 @@
-
+<!-- 
  <div data-spy="scroll" data-target="#myScrollspy" data-offset="20">
 
 <div class="container">
@@ -50,7 +50,6 @@
        </div>
        <div class="col-md-4">
        	<div class="panel panel-default">
-  <!-- Default panel contents -->
   <div align="right" class="panel-heading">Your Cart <span align="right"><img src="assets/images/cartIcon.png" width="50px" height="50px"></span></div>
   <div class="panel-body">
   	<div ng-if="!cart || cart.length==0">
@@ -88,14 +87,10 @@
 
 </div>
 
-<!-- Trigger the modal with a button -->
-<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
- -->
-<!-- Modal -->
+
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
 
-    <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -139,8 +134,63 @@
 </div>
 
 </div>
+ -->
+<!-- <md-list>
+    <md-list-item>
+    <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
+    <span>Item content in list</span>
+  </md-list-item>
+</md-list>
+ -->
 
 
 
+    <md-input-container>
+        <md-select ng-model="userSelect.selectedCategory" aria-label="Select a Category"  ng-change="changeItemScroll()"  class="stickySelect">
+          <md-option ng-value="$index" ng-repeat="category in categories">
+          <span class="center">{{ category.name }}
+          </span>
+          </md-option>
+        </md-select>
+      </md-input-container>
 
+     <div class="itemsContainer" layout="row" layout-margin="20px"  >
+<md-virtual-repeat-container id="vertical-container" md-top-index="userSelect.topIndex" flex-gt-sm="80" flex-sm="99" flex-xs="99" >
+      <md-list>
+        <md-list-item md-virtual-repeat="item in items"
+            class="repeated-item md-3-line" ng-class="{header: item.header}">
+   <img ng-if="item.image != null"   src="{{item.image}}" class="md-avatar"></img>
+    <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="md-avatar"></img>          
+  <div class="md-list-item-text" layout="column">
+   <md-text-float class="itemName">{{item.itm.name}}</md-text-float>
+   <p><span>Price: <i class="fa fa-inr"></i>
+   </span>{{item.itm.price}}</p>
+   <p ng-if="item.price_half > 0"><span>Price-Half: <i class="fa fa-inr"></i>
+   </span>{{item.itm.price_half}}
+   </p>
+  </div>
+
+ <md-button class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="openTab(item, $event)" ng-if="item.itm.price_half !== null || 0 || undefined">
+    <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
+  </md-button>
+
+   <md-button  ng-if="item.itm.price_half=== null || 0 || undefined" class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="addItemToCart(item.itm)">
+    <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
+  </md-button>
+        </md-list-item>
+      </md-list>
+      </md-virtual-repeat-container>
+
+      <div hide-xs hide-sm show-md show-gt-md flex>
+           <div ng-include src=" 'components/cart/cart.html' ">
+
+      </div>
+    </div>
+
+    <div show-xs show-sm hide-md hide-lg flex class="cartFabIcon">
+       <md-button animate-on-change="cart.length"class="md-fab" aria-label="Cart">
+            <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{cart.length}}</span>
+        </md-button>
+    </div>
+    </div>
 

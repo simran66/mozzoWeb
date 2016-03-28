@@ -10,14 +10,18 @@ angular.module('angularTestApp', [
   'ngMaterial', 
   'ngMessages', 
   'underscore',
-  'satellizer'
+  'satellizer',
+'angularUtils.directives.dirPagination',
+'ngAnimate'
 ])
-  .config(function ($stateProvider, $authProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
+  .config(function ($stateProvider,  $resourceProvider, $authProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $urlRouterProvider
       .otherwise('/');
     $httpProvider.interceptors.push('authInterceptor');
 
      $locationProvider.html5Mode(true);
+      $resourceProvider.defaults.stripTrailingSlashes = false;
+
     // $httpProvider.defaults.useXDomain = true;
     // delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
@@ -25,7 +29,7 @@ angular.module('angularTestApp', [
       .primaryPalette('deep-orange')
       .accentPalette('orange');
 
-    $mdThemingProvider.theme('login')
+    $mdThemingProvider.theme('altTheme')
       .primaryPalette('brown')
       .accentPalette('yellow');
 
@@ -109,4 +113,18 @@ $authProvider.google({
         }
       });
     });
+  })
+
+  .directive('animateOnChange', function($animate,$timeout) {
+  return function(scope, elem, attr) {
+      scope.$watch(attr.animateOnChange, function(nv,ov) {
+        if (nv!=ov) {
+          elem.addClass('animated zoomIn');
+        $timeout(function() {
+          elem.removeClass('animated zoomIn');
+        }, 1000); 
+      
+   }
+})
+    }
   });

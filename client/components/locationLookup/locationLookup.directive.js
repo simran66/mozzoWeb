@@ -68,6 +68,9 @@ angular.module('angularTestApp')
               var locationString = (" ").concat(locData.description);
               var updatedElement = angular.element(iElement.find('input'));
               updatedElement[0].value = locationString;
+             // updatedElement[0].value = (location.terms[location.terms.length - 2]).toString();
+              console.log("city is", ("").concat(location.terms[location.terms.length - 2]) )
+            // updatedElement[0].value = location.terms[location.terms.length - 2].value;
               model.$render();
               console.log("updated eleemn", updatedElement)
                         scope.results = [];
@@ -93,8 +96,8 @@ angular.module('angularTestApp')
     return {
       restrict: 'E',
       scope: { results: '=' },
-      //template: '<div id="custom-search-input"><div class="input-group col-md-12"><input type="text" class="  search-query form-control" placeholder="Search" /> </div> </div>',
-      template: '<md-input-container md-colspan="8" class="md-input-focused"><label>Location</label><input></md-input-container>',
+     // template: '<div id="custom-search-input"><div class="input-group col-md-12"><input type="text" class="  search-query form-control" placeholder="Search" /> </div> </div>',
+      template: '<md-input-container class="md-input-focused md-icon-float md-icon-right md-block"><label>Location</label><input><md-icon><i class="material-icons" style="display:inline-block;">edit_location</i></md-icon></md-input-container>',
       link: function(scope, iElement, iAttrs) {
 
         // Setup Google Auto-complete Service
@@ -105,7 +108,10 @@ angular.module('angularTestApp')
         // Fetch predictions based on query
         var fetch = function(query) {
           googleMapsService.getPlacePredictions({
-            input: query
+            input: query,
+              componentRestrictions: {
+               country: 'IN'
+               }
           }, fetchCallback);
         };
 

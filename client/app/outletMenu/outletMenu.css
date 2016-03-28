@@ -5,6 +5,42 @@
 
 }
 
+
+
+#vertical-container {
+  height: 100vh;
+  width: 100%; 
+}
+
+
+.itemsContainer{
+  margin: 50px;
+  background-color: rgb(0,0,0) transparent !important;
+}
+ .repeated-item {
+  border-bottom: 1px solid #ddd;
+  box-sizing: border-box;
+  height: 90px;
+  padding: 10px;
+   }
+
+
+.add{
+  color:blue;
+}
+
+
+.centerOptions{
+  margin: 20px;
+  padding: 5px;
+  margin-bottom: 0px;
+  
+}
+
+
+
+
+
 .menu-container{
    /* margin-left: 2%;
     margin-right: 5%;*/
@@ -13,6 +49,10 @@
 .itemPrice{
     text-transform: capitalize;
     color: green;
+}
+
+.md-select-value{
+  text-align: center;
 }
 
 .modalHeading{
@@ -46,4 +86,19 @@
 
 .subButton{
   color: red;
+}
+
+.itemName{
+  font-style: bold;
+  font-size: inherit;
+  text-transform: capitalize;
+  color: red;
+}
+
+.cartText{
+  color: blue;
+}
+
+.cartFabIcon{
+  padding: 4px;
 }

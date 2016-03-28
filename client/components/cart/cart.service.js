@@ -7,12 +7,14 @@ angular.module('angularTestApp')
     var OrderBill={};
 
     function calculateTax(place){
+      if(place.tax_types){
       for(var i=0; i< place.tax_types.length; i++){
       console.log("fraction  ", parseFloat(place.tax_types[i].fraction) )
       console.log("TOTAL BASE", OrderBill.totalBaseAmount)
        OrderBill.taxAmount += (parseFloat(place.tax_types[i].fraction) * OrderBill.totalBaseAmount);
       }
       console.log("TAX AMOUNT", OrderBill.taxAmount  )
+    }
     }
 
     function calculateBill(place){
@@ -21,6 +23,7 @@ angular.module('angularTestApp')
         OrderBill.items.push(userCart[i]);
         OrderBill.totalBaseAmount+=(userCart[i].priceForItem*userCart[i].quantity);
       }
+       if(place)
       calculateTax(place);
       OrderBill.totalAmount= OrderBill.taxAmount + OrderBill.totalBaseAmount;
     }
@@ -37,6 +40,7 @@ angular.module('angularTestApp')
     return {
 
       addToCart:function(item,place){
+        console.log("item to add", item)
       var checkBool = checkIfItemInCart(item);
        if(checkBool !== null && checkBool>= 0){
            userCart[checkBool].quantity += 1
@@ -44,6 +48,8 @@ angular.module('angularTestApp')
         item.quantity = 1;
         userCart.push(item)
        }
+
+       if(place)
       calculateBill(place);
        return userCart
 
@@ -58,7 +64,7 @@ angular.module('angularTestApp')
            if(userCart[checkBool].quantity == 0)
             userCart.splice(checkBool, 1);
        }
-
+       if(place)
        calculateBill(place);
        return userCart
 
@@ -69,6 +75,7 @@ angular.module('angularTestApp')
         if(checkBool !== null && checkBool>= 0){
             userCart.splice(checkBool, 1);
        }
+       if(place)
        calculateBill(place);
        return userCart
       },

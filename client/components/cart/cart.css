@@ -11,12 +11,34 @@
   margin-top:20px;
   
 }
+.red{
+	color: red;
+
+}
 
 
+.cartItemLIst{
+	font-size: 0.8em;
+}
+.finalAmount{
+	color: green;
+}
+.subdued{
+ color: gray;
+ font-size: 10px;
+}
 .addButton{
    color: green;
 }
 
 .subButton{
   color: red;
+}
+
+
+.cart{
+	color:#ffaa80;
+	margin: 3px;
+	padding: 2px;
+
 }

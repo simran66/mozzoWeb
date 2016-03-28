@@ -1,31 +1,50 @@
        	<div class="panel panel-default">
 
-  <div align="right" class="panel-heading">Your Cart <span align="right"><img src="assets/images/cartIcon.png" width="50px" height="50px"></span></div>
-  <div class="panel-body">
-  	<div ng-if="!cart || cart.length==0">
-  	</div>
+  <div align="right" class="panel-heading">Your Cart 
+    <i class="material-icons cart">shopping_cart</i>
+  </div>
+  <div class="panel-body" flex>
+  	  <div ng-if="!cart || cart.length==0" class="subdued">
+
+        Cart is empty. Add some items to the cart . <i class="material-icons">add_shopping_cart</i>
+      </div>
 
   	<div ng-if="cart.length > 0">
-  	<div>Your Cart</div>
-  	<ul class="list-group">
-  <li class="list-group-item cartdata modalOption row" ng-repeat="item in cart">
+  <!-- 	<ul class="list-group">
+  <li class="list-group-item cartdata modalOption" ng-repeat="item in cart">
   	<span class="col-md-6">{{item.name}}<span ng-if="item.isHalf">(Half)</span></span>
   	<span class="row col-md-6"><span class="btn glyphicon glyphicon-plus-sign col-md-2 addButton"></span><span class="col-md-2">{{item.quantity}}</span><span class="btn glyphicon glyphicon-minus-sign col-md-2 subButton"></span></span>
   </li>
   
-</ul>
-<div class="row itemPrice">
+</ul> -->
+
+<md-list>
+  <md-list-item ng-repeat="item in cart" class="secondary-button-padding cartItemLIst" layout="row">
+  <p flex="33">{{item.name}}<span ng-if="item.isHalf">[Half]</span><p>
+    <div align="right" flex="66"><md-text-float>{{item.quantity}} <span class="red">X {{item.priceForItem}}</span>=<span class="finalAmount">{{item.quantity* item.priceForItem}}</span></md-text-float></div>
+      <md-divider></md-divider>
+  </md-list-item>
+</md-list>
+<!-- <div class="row itemPrice">
   <span class="col-md-6">Subtotal: </span><div class="col-md-6" align="right">{{OrderBill.totalBaseAmount}}</div>
   <span class="col-md-6">Tax: </span><div class="col-md-6" align="right">{{OrderBill.taxAmount}}</div>
 
-</div>
+</div> -->
 
 </div>
 </div>
 
 
-<div class="panel-footer" align="right">
-	Total: {{OrderBill.totalAmount}}
+<div class="panel-footer" align="right" ng-if="cart.length > 0">
+  <p>Tax: <i class="fa fa-inr"></i>
+{{OrderBill.taxAmount}}</p>
+  <p>Subtotal:<i class="fa fa-inr"></i>
+{{OrderBill.totalBaseAmount}}</p>
+	<p>Total: <i class="fa fa-inr"></i>
+{{OrderBill.totalAmount}}</p>
 </div>
 
 </div>
+
+
+

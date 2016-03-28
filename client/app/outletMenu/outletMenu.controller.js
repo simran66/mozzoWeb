@@ -1,27 +1,101 @@
 'use strict';
 
 angular.module('angularTestApp')
-  .controller('OutletMenuCtrl', function ($scope, getOutletMenu, _, getPlaces, $state, cart) {
+  .controller('OutletMenuCtrl', function ($scope, $mdToast, getOutletMenu, _, getPlaces, $state, cart, $mdDialog) {
     $scope.message = 'Hello';
     var place;
+    var self = this;
+    console.log("self is", self)
 
-
-    
-    var init= function(){
+ var init= function(){
          var id = getOutletMenu.getId();
          var res = getOutletMenu.getMenu().get({place: id});
+         $scope.items=[];
          console.log("resource is", res)
+         $scope.userSelect={'selectedCategory': 0, 'topIndex': 0};
+         console.log("id",id)
          place = getPlaces.getAll().get({id: id});
          console.log("returned places", place)
          res.$promise.then(function(data){
              $scope.categories = data.results;
              console.log("menu", $scope.categories);
+             _.forEach($scope.categories, function(cat, i){
+              _.forEach(cat.items, function(item){
+                  $scope.items.push({itm: item, categoryIndex: i});
+                  console.log("ITEMS", $scope.items)
+              })
+             })
              
          })
+
+            //  $scope.categories= [{
+            //   name: 'CaAT 1', 
+            //   items: [{
+            //      name: 'ITEM 1'
+            //   }, {
+            //      name: 'ITEM 2'
+
+            //   }, {
+            //      name: 'ITEM 3'
+
+            //   }]
+            //  },{name: 'CaAT 2', 
+            //   items: [{
+            //      name: 'ITEM 4'
+
+            //   }, {
+            //      name: 'ITEM 5'
+
+            //   }]
+
+            //  }, {name: 'CaAT 3', 
+            //   items: [{
+            //      name: 'ITEM 6'
+
+            //   }, {
+            //      name: 'ITEM 7'
+
+            //   }]
+
+            //  }, {
+            //   name: 'CaAT 4', 
+            //   items: [{
+            //      name: 'ITEM 8'
+
+            //   }, {
+            //      name: 'ITEM 9'
+
+            //   }, {
+            //     name: 'ITEM 10'
+  
+            //   }]
+            // }
+            // ]
+
+            //  _.forEach($scope.categories, function(cat, i){
+            //   _.forEach(cat.items, function(item){
+            //       $scope.items.push({itm: item, categoryIndex: i})
+            //       console.log("ITEMS", $scope.items)
+            //   })
+            // });
+
+
     }
 
     init();
 
+
+   $scope.showToast = function(actionType){
+
+    var messages =['Item has been added to cart', 'Item has been deleted from cart'];
+
+     $mdToast.show(
+                         $mdToast.simple()
+                        .textContent(messages[actionType])                      
+                        .hideDelay(2000)
+                  );
+
+   }
     // var checkIfItemInCart=function(itemToCheck){
     //     for(var i=0; i<$scope.cart.length; i++){
     //         if($scope.cart[i].id==itemToCheck.id && itemToCheck.isHalf == $scope.cart[i].isHalf){
@@ -31,9 +105,33 @@ angular.module('angularTestApp')
     //     return null
     // }
 
-   $scope.checkForOptions = function(itemToPush){
+   // $scope.checkForOptions = function(itemToPush){
+   //     $scope.itemSelected = itemToPush;
+   // }
+
+   $scope.openTab=function(itemToPush, ev){
        $scope.itemSelected = itemToPush;
+      $scope.showTabDialog(ev)
    }
+
+
+   $scope.showTabDialog = function(ev) {
+    $mdDialog.show({
+      templateUrl: 'app/outletMenu/itemOptions.tmpl.html',
+     parent: angular.element(document.body),
+      locals:{dataToPass: $scope.itemSelected},                
+      controller: DialogController,
+      targetEvent: ev,
+      clickOutsideToClose:true
+    }).then(function(answer) {
+          //$scope.status = 'You said the information was "' + answer + '".';
+
+          $scope.addItemToCart($scope.itemSelected.itm, 1, answer);
+          $mdDialog.hide(answer);
+        });
+  };
+
+ 
 
     $scope.addItemToCart = function(itemToPush, quantity, option){
         if(!$scope.cart)
@@ -61,10 +159,34 @@ angular.module('angularTestApp')
        //  $scope.cart.push(item)
        // }
        // $scope.calculateBill();
-
+        console.log("place is", place)
        $scope.cart = cart.addToCart(item,place);
        $scope.OrderBill= cart.getOrderBill();
+       console.log("update cart", $scope.cart)
+
+       $scope.showToast(0);
     };
+
+    $scope.changeItemScroll=function(){
+          var temp=0;
+          if($scope.userSelect.topIndex !== $scope.userSelect.selectedCategory){
+                for(var i=0; i<=$scope.userSelect.selectedCategory; i++)
+                    var temp = temp + $scope.categories[$scope.userSelect.selectedCategory].items.length;
+                $scope.userSelect.topIndex = temp;
+          }     
+    }
+
+
+  
+        $scope.$watch(function() {
+                return $scope.userSelect.topIndex
+         }, function(topIndex) {
+          console.log("items", $scope.items)
+          console.log("index", topIndex)
+          console.log($scope.items[topIndex])
+          if($scope.items.length > 0 && $scope.items[topIndex] !== null || undefined)
+         $scope.userSelect.selectedCategory=$scope.items[topIndex].categoryIndex;
+        });
 
 
     $scope.deleteItemFromCart = function(itemToDelete){
@@ -81,6 +203,7 @@ angular.module('angularTestApp')
 
        $scope.cart = cart.deleteItemFromCart(itemToDelete,place);
       $scope.OrderBill= cart.getOrderBill();
+      $scope.showToast(1);
 
     };
 
@@ -132,3 +255,23 @@ angular.module('angularTestApp')
     }
 
   });
+
+
+function DialogController($scope, $mdDialog, dataToPass) {
+  console.log("scope", $scope)
+  console.log("data to pass", dataToPass)
+  $scope.itemSelected = dataToPass.itm
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function(answer) {
+    console.log("selected choice is", answer)
+    console.log("data to pass", dataToPass)
+    $mdDialog.hide(answer);
+  };
+}
+    
+   

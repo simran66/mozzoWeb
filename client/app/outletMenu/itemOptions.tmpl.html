@@ -1,0 +1,35 @@
+<md-dialog aria-label="">
+  <form>
+
+    <div class="modal-header">
+<!--         <button type="button" class="close" ng-click="hide()">&times;</button>
+ -->        <h6 class="modal-title"><span class="modalHeading">Good Choice! Let's Customize ? </span></h6>
+   </div>
+    <md-dialog-content class="centerOptions">
+          <md-radio-group ng-model="selectedValue">
+            <span class='modalOption'>Half</span>
+          <md-radio-button flex
+              value="0.5"
+              class="md-hue-1" >
+            <i class="fa fa-inr"></i>{{itemSelected.price_half}}
+          </md-radio-button>
+       
+
+           <span class='modalOption'>Full</span>
+          <md-radio-button flex
+              value="1"
+              class="md-hue-1" >
+            <i class="fa fa-inr"></i>{{itemSelected.price}}
+          </md-radio-button>
+        
+    </md-radio-group>
+    </md-dialog-content>
+    <md-dialog-actions layout="row">
+      <span flex></span>
+      <md-button ng-click="answer(selectedValue)" class="md-primary">
+        Confirm
+      </md-button>
+      </md-dialog-actions>    
+  
+  </form>
+</md-dialog>

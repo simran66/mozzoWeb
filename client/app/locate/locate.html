@@ -1,84 +1,109 @@
-<!-- <div ng-include="'components/navbar/navbar.html'"></div>
- -->
-<div class="row">
-  <div class="col-md-12" ng-show="!showSearch">
-       <div class="row">
-       <div class="col-md-11">
-      <location-lookup ng-model="lookedUpLocation" limit-to="4" changelocation="getPlaces" callback="getPlaces"></location-lookup>
-    </div>
-       <md-button class="searchButton" aria-label="Search" ng-click="showSearch = !showSearch">
-            <ng-md-icon icon="search"></ng-md-icon>
+
+  <div class="row" ng-show="!showSearch">
+      <div class="row">
+        
+        <div class="col-md-11">
+              <location-lookup ng-model="lookedUpLocation" limit-to="4" changelocation="getPlaces" callback="getPlaces">
+              </location-lookup>
+        </div>
+
+         <md-button class="searchButton" aria-label="Search" ng-click="showSearch = !showSearch"> 
+           <i class="material-icons">search
+           </i>
+        </md-button>
+      </div>
   </div>
-  </div>
-</div>
-     <div class="col-md-12" ng-show="showSearch" class="searchBar">
-       <div class="md-toolbar-tools">
-          <md-button ng-click="showSearch = !showSearch;searchText='' " aria-label="Back">
-            <ng-md-icon icon="arrow_back"></ng-md-icon>
-          </md-button>
+
+
+  <div class="col-md-12" ng-show="showSearch" class="searchBar">
+              <div class="md-toolbar-tools">
+                  <md-button ng-click="showSearch = !showSearch;searchText='' " aria-label="Back">
+              <i class="material-icons">keyboard_backspace
+              </i>
+                 </md-button>
      
-          <div id="custom-search-input">
+                        <div id="custom-search-input">
                             <div class="input-group col-md-12">
-                                <input type="text" class="  search-query form-control" placeholder="Search" />
+                                <input type="text" class="  search-query form-control" placeholder="Search" ng-model="searchText"/>
                                 <span class="input-group-btn">
                                     <button class="btn btn-danger" type="button">
-                                        <span class=" glyphicon glyphicon-search"></span>
+                                        <span class=" glyphicon glyphicon-search">
+                                        </span>
                                     </button>
                                 </span>
                             </div>
                         </div>
     
-        </div>
-       
-    </div>
- </div>
-<div class="row">
-<div class="col-md-2">
-</div>
-<div ng-repeat="place in places  | filter:{name:searchText}" class="col-md-6">
-
-   <md-card>
-       
-        <md-card-header>
-    <md-card-avatar>
-      <img class="md-user-avatar" src="/assets/images/food.jpg">
-    </md-card-avatar>
-    
-
-    <md-card-header-text>
-    <div class="row">
-      <div class="col-md-8">
-         <div class="md-title"><span class="placeTitle">{{place.name}}</span><span class="hearts">   3</span><span class="loves"><ng-md-icon icon="favorite" ></span></div>
-         <div class="md-subhead placeDesc">{{place.description}}</div>
-     </div>
-   
+              </div>
   </div>
-    </md-card-header-text>
-    
-        <div class="circle-singleline" align="right">
-    2 KM
-</div>
-  </md-card-header>
-  <md-card-content>
-    <p>
-     Card content
-    </p>
-  </md-card-content>
-  <md-card-footer>
+
+
   <div class="row">
-    <div class="col-md-6">
-               <div align="left" class="footerText">Min. Delivery: <i class="fa fa-inr"></i>{{place.min_order_value}}</div>
-    </div>
+  <div class="col-md-6 col-md-offset-3">
+    <md-virtual-repeat-container id="vertical-container">
+      <div md-virtual-repeat="place in places  | filter:{name:searchText}"
+          class="repeated-item flex">
+      
+          <md-card class="descriptionCard">
+              <md-card-header>
+                         <md-card-avatar>
+                            <img class="md-user-avatar" src="/assets/images/food.jpg">
+                            </img>
+                         </md-card-avatar>
+    
+
+                  <md-card-header-text layout="row">
+                    <div class="md-title" layout="row" layout-xs="column" flex>
+                         <span class="placeTitle">{{place.name}}
+                         </span>
+                         <span class="hearts">  3
+                         </span>
+                         <span class="loves">
+                         </span>
+                    </div>
+                  
+                   <!--  
+                    <div class="md-subhead placeDesc">{{place.description}}
+                    </div>
+ -->
+                      <span class="circle-singleline" flex="20" layout-align="end end">
+                           2 KM
+                      </span>
+
+                  </md-card-header-text>  
+              </md-card-header>
+         
+
+                    <md-card-content>
+            <p>
+             {{place.description}}
+            </p>
+                    </md-card-content>
+  
+
+                    <md-card-footer>
+            <div class="row">
+            <div class="col-md-6">
+            <div align="left" class="footerText">Min. Delivery:
+             <i class="fa fa-inr"></i>
+             {{place.min_order_value}}
+            </div>
+            </div>
 
 
-    <div class="col-md-6" align="right">
-              <md-button class="md-raised md-primary" ng-click="selectOutlet(place.id)">Place Order</md-button>
-    </div>
-</div>
-  </md-card-footer>
-      </md-card>
+            <div class="col-md-6" align="right">
+              <md-button class="md-raised md-primary" ng-click="selectOutlet(place.id)">Place Order
+              </md-button>
+            </div>
+            </div>
+                    </md-card-footer>
+          </md-card>
+      </div>
+    </md-virtual-repeat-container>
+  </div>
 
-</div>
-<div class="col-md-4">
-</div>
-</div>
+  <div class="col-md-4">
+  </div>
+  </div>
+
+            

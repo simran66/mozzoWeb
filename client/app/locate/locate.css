@@ -1,5 +1,24 @@
 
 
+#vertical-container {
+  height: 200px;
+}
+
+.descriptionCard{
+    background-color: rgba(0,0,0,0.04);
+      height: 200px;
+      border: 0px;
+      overflow: hidden;
+
+
+}
+
+
+
+.predict li{
+background-color:rgba(0,0,0,0.03);
+}
+
 .rating {
     color: #a9a9a9;
     margin: 0;

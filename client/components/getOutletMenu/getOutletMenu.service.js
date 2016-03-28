@@ -9,11 +9,13 @@ angular.module('angularTestApp')
      	}, 
 
      	getId: function(){
+        console.log("returning place id", placeId)
           return placeId
      	}, 
 
      	setId:function(id){
           placeId = id
+          console.log("place id set", placeId)
      	}
 
 

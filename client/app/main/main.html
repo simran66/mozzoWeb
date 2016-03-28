@@ -19,11 +19,14 @@
 
 <div class="container-fluid row">
 <div layout="row" class="locator">
+     <!--  <div class="col-md-offset-2 col-md-4">
+         <location-lookup  ng-model="lookedUpLocation" limit-to="4" changelocation="getPlaces" callback="getPlaces"></location-lookup>
+      </div> -->
      <div class="col-md-offset-2 col-md-6">
       <location-lookup  ng-model="lookedUpLocation" limit-to="4" changelocation="getPlaces" callback="getPlaces"></location-lookup>
      </div>
       <div nd-colspan="4">
-           <md-button class="md-warn md-raised">Search Restaurants</md-button>
+           <md-button class="md-warn md-raised" ui-sref="locate">Search Restaurants</md-button>
        </div>
     </div>
 </div>
