@@ -16,6 +16,7 @@
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
       <link rel="stylesheet" href="bower_components/animate.css/animate.css" />
+      <link rel="stylesheet" href="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.css" />
       <!-- endbower -->
       <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
     <!-- endbuild -->
@@ -28,6 +29,7 @@
       <link rel="stylesheet" href="app/locate/locate.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/orderOptions/orderOptions.css">
+      <link rel="stylesheet" href="app/orderPlaced/orderPlaced.css">
       <link rel="stylesheet" href="app/outletMenu/outletMenu.css">
       <link rel="stylesheet" href="components/cart/cart.css">
       <link rel="stylesheet" href="components/locationLookup/locationLookup.css">
@@ -78,8 +80,10 @@
       <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
       <script src="bower_components/satellizer/satellizer.js"></script>
       <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
+      <script src="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
       <!-- endbower -->
       <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDeNrX3wsAX9o_oGXMHBMC3DKsDqsv1vSw&libraries=places&sensor=true"></script>
+      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <script
 src="https://checkout.razorpay.com/v1/checkout.js"
@@ -88,7 +92,8 @@ data-name="Mozzo"
 data-description="Purchase Description"
 data-theme.color="#F37254"
 ></script>
-      <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+
+
     <!-- endbuild -->
 
         
@@ -108,6 +113,8 @@ data-theme.color="#F37254"
           <script src="app/main/main.js"></script>
           <script src="app/orderOptions/orderOptions.controller.js"></script>
           <script src="app/orderOptions/orderOptions.js"></script>
+          <script src="app/orderPlaced/orderPlaced.controller.js"></script>
+          <script src="app/orderPlaced/orderPlaced.js"></script>
           <script src="app/outletMenu/outletMenu.controller.js"></script>
           <script src="app/outletMenu/outletMenu.js"></script>
           <script src="components/auth/auth.service.js"></script>

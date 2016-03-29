@@ -1,0 +1,11 @@
+.blueText{
+	font-weight: normal;
+	color: blue;
+}
+
+.infoDiv{
+	margin: 30vh;
+	padding: 20px;
+	background: #ccc;
+	background-color: (0,0,0,0.03);
+}

@@ -12,7 +12,9 @@ angular.module('angularTestApp', [
   'underscore',
   'satellizer',
 'angularUtils.directives.dirPagination',
-'ngAnimate'
+'ngAnimate',
+'ui.bootstrap',
+'ui.bootstrap.datetimepicker'
 ])
   .config(function ($stateProvider,  $resourceProvider, $authProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $urlRouterProvider
