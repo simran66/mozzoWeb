@@ -84,6 +84,14 @@ angular.module('angularTestApp')
 
     init();
 
+    $scope.proceedToCheckOut=function(){
+      console.log("procedd to checjout", $scope.cart)
+        if($scope.cart.length > 0){
+          console.log("state go")
+          $state.go('orderOptions');
+        }
+    }
+
 
    $scope.showToast = function(actionType){
 
@@ -250,9 +258,9 @@ angular.module('angularTestApp')
     //   console.log("CALCULATED BILL", $scope.OrderBill.totalAmount)
     // }
 
-    $scope.proceedToCheckOut=function(){
-      $state.go('orderOptions');
-    }
+    // $scope.proceedToCheckOut=function(){
+    //   $state.go('orderOptions');
+    // }
 
   });
 

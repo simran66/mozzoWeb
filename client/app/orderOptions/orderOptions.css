@@ -85,10 +85,61 @@ p{margin-bottom:.3em;}
 }
 
 
+.container{
+  margin: 15px;
+  padding: 10px;
+}
+
 .addButton{
    color: green;
+}
+
+
+md-input-container{
+  margin: 9px;
+  padding: 5px;
 }
 
 .subButton{
   color: red;
 }
+
+.userInfoContainer{
+  background-color: rgba(0, 0, 0, 0.03)
+  margin: 20px;
+  padding: 10px;
+}
+
+
+.personIcon{
+
+  color: blue;
+
+}
+
+.phoneIcon{
+
+  color: orange;
+
+}
+
+.emailIcon{
+
+  color: green;
+
+}
+
+.amountIcon{
+
+  color: gray;
+
+}
+
+.error-message{
+  text-align: center;
+  color: red;
+  font-size: 12px;
+  font-style: bold;
+
+}
+

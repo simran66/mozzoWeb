@@ -7,7 +7,7 @@ angular.module('angularTestApp')
         url: '/orderOptions',
         templateUrl: 'app/orderOptions/orderOptions.html',
         controller: 'OrderOptionsCtrl',
-         authenticate: true
+         //authenticate: true
 
       });
   });

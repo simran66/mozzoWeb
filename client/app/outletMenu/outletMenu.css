@@ -37,9 +37,14 @@
   
 }
 
+.centerText{
+  text-align: center;
+}
 
+._md-select-value {
 
-
+  text-align: center !important
+}
 
 .menu-container{
    /* margin-left: 2%;
