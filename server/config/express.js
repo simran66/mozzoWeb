@@ -7,6 +7,7 @@
 var express = require('express');
 var favicon = require('serve-favicon');
 var morgan = require('morgan');
+var gzippo = require('gzippo');
 var compression = require('compression');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -28,6 +29,8 @@ module.exports = function(app) {
   app.use(methodOverride());
   app.use(cookieParser());
   app.use(passport.initialize());
+  app.use(gzippo.staticGzip("" + __dirname + "/dist"));
+
   if ('production' === env) {
     app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));
