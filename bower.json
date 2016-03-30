@@ -19,7 +19,6 @@
     "angular-underscore-module": "^1.0.3",
     "satellizer": "^0.14.0",
     "angularUtils-pagination": "angular-utils-pagination#^0.11.0",
-    "animate.css": "animate-css#^3.5.1",
     "angular-ui-bootstrap-datetimepicker": "^1.2.4"
   },
   "devDependencies": {
