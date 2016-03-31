@@ -5,7 +5,7 @@
 'use strict';
 
 var express = require('express');
-var favicon = require('serve-favicon');
+//var favicon = require('serve-favicon');
 var morgan = require('morgan');
 var gzippo = require('gzippo');
 var compression = require('compression');
@@ -32,7 +32,7 @@ module.exports = function(app) {
   app.use(gzippo.staticGzip("" + __dirname + "/dist"));
 
   if ('production' === env) {
-    app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
+    //app.use(favicon(path.join(config.root, 'public', 'favicon.ico')));
     app.use(express.static(path.join(config.root, 'public')));
     app.set('appPath', path.join(config.root, 'public'));
     app.use(morgan('dev'));

@@ -4,9 +4,9 @@
 // ==================================
 module.exports = {
   // MongoDB connection options
-  mongo: {
-    uri: 'mongodb://localhost/angulartest-dev'
-  },
+  // mongo: {
+  //   uri: 'mongodb://localhost/angulartest-dev'
+  // },
 
-  seedDB: true
+  // seedDB: true
 };
