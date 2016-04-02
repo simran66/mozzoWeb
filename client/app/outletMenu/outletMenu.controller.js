@@ -1,7 +1,26 @@
 'use strict';
 
+function DialogController($scope, $mdDialog, dataToPass) {
+  console.log("scope", $scope)
+  console.log("data to pass", dataToPass)
+  //$scope.itemSelected = dataToPass.itm
+  $scope.itemSelected = dataToPass;
+  $scope.hide = function() {
+    $mdDialog.hide();
+  };
+  $scope.cancel = function() {
+    $mdDialog.cancel();
+  };
+  $scope.answer = function(answer) {
+    console.log("selected choice is", answer)
+    console.log("data to pass", dataToPass)
+    $mdDialog.hide(answer);
+  };
+}
+
+
 angular.module('angularTestApp')
-  .controller('OutletMenuCtrl', function ($scope, $mdToast, getOutletMenu, _, getPlaces, $state, cart, $mdDialog) {
+  .controller('OutletMenuCtrl',['$scope', '$mdToast', 'getOutletMenu', '_', 'getPlaces', '$state', 'cart', '$mdDialog', function ($scope, $mdToast, getOutletMenu, _, getPlaces, $state, cart, $mdDialog) {
     $scope.message = 'Hello';
     var place;
     var self = this;
@@ -265,25 +284,8 @@ angular.module('angularTestApp')
     //   $state.go('orderOptions');
     // }
 
-  });
+  }]);
 
 
-function DialogController($scope, $mdDialog, dataToPass) {
-  console.log("scope", $scope)
-  console.log("data to pass", dataToPass)
-  //$scope.itemSelected = dataToPass.itm
-  $scope.itemSelected = dataToPass;
-  $scope.hide = function() {
-    $mdDialog.hide();
-  };
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-  $scope.answer = function(answer) {
-    console.log("selected choice is", answer)
-    console.log("data to pass", dataToPass)
-    $mdDialog.hide(answer);
-  };
-}
-    
+
    
