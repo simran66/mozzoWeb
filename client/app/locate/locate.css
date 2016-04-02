@@ -13,6 +13,10 @@
 
 }
 
+.margined{
+  margin: 5px
+}
+
 
 
 .predict li{
@@ -121,6 +125,7 @@ ul li {
   line-height: 0px !important;
   min-height:  0px !important;
   min-width:  0px !important;
+  margin-top: 15px;
 }
 
 

@@ -15,13 +15,17 @@ angular.module('angularTestApp')
       require: '?ngModel',
       templateUrl: 'components/locationLookup/locationLookup.html',
       scope: {
-        changelocation:"="
+        changelocation:"=",
+        callback: "&callback",
       },
       link: function(scope, iElement, iAttrs, model) {
 
         scope.limitTo = scope.$eval(iAttrs.limitTo) || 15;
         console.log("attrs", iAttrs)
         scope.callback = scope.$eval(iAttrs.callback);
+         //scope.callback = scope.$eval(iAttrs.callback);
+        console.log("CALLBACK is", iAttrs.callback);
+        console.log("calback 2", scope.calback)
         scope.results = [];
 
         console.log("finding elemtn", angular.element(iElement.find('input')))
@@ -33,13 +37,17 @@ angular.module('angularTestApp')
         // Setup Google Places Service
         var googlePlacesService = new google.maps.places.PlacesService(iElement[0].appendChild(elem));
 
+
         // Clear query and results
         scope.clear = function() {
           scope.results = [];
         };
                       console.log("MODEL IS ", model);
+                      console.log("google places", googlePlacesService)
 
-
+        scope.passLocation = function(location){
+          scope.callback(location)
+        }
         // Pick A Location
         scope.pickLocation = function(location) {
           console.log("location in pick location", location)
@@ -56,7 +64,7 @@ angular.module('angularTestApp')
                 latitude: place.geometry.location.lat(),
                 longitude: place.geometry.location.lng()
               };
-
+             // detectedLoc = locData;
               // Update model
               model.$setViewValue(locData);
               console.log("MODEL IS ", model);
@@ -75,7 +83,7 @@ angular.module('angularTestApp')
               console.log("updated eleemn", updatedElement)
                         scope.results = [];
               console.log("callback", scope.callback)
-              scope.changelocation(place, location);
+              scope.changelocation({lat: place.geometry.location.lat() , lng:place.geometry.location.lng() }, location);
               scope.callback && scope.callback(locData);
 
 
@@ -95,16 +103,17 @@ angular.module('angularTestApp')
   function($log, location, reverseGeocoder) {
     return {
       restrict: 'E',
-      scope: { results: '=' },
+      scope: { results: '=',
+       },
+
      // template: '<div id="custom-search-input"><div class="input-group col-md-12"><input type="text" class="  search-query form-control" placeholder="Search" /> </div> </div>',
-      template: '<md-input-container class="md-input-focused md-icon-float md-icon-right md-block"><label>Location</label><input><md-icon><i class="material-icons" style="display:inline-block;">edit_location</i></md-icon></md-input-container>',
+      template: '<md-input-container class="md-input-focused searchText md-input-has-value md-icon-float md-icon-right md-block addedMargins"><label>Location</label><input type="text"  class="addedMargins md-input-focused md-input-has-value" md-autofocus="autofocus"><md-icon><i class="material-icons" style="display:inline-block;">edit_location</i></md-icon></md-input-container>',
       link: function(scope, iElement, iAttrs) {
 
         // Setup Google Auto-complete Service
         var googleMapsService = new google.maps.places.AutocompleteService();
         var geocoder = new google.maps.Geocoder();
         var el = angular.element(iElement.find('input'));
-
         // Fetch predictions based on query
         var fetch = function(query) {
           googleMapsService.getPlacePredictions({
@@ -130,8 +139,13 @@ angular.module('angularTestApp')
     if (status === google.maps.GeocoderStatus.OK) {
       if (results[1]) {
         console.log("result", results)
+        console.log(el)
+        console.log("el value is", el[0].value.length)
+        if(!el[0].value || el[0].value.length <= 0){
         el.val(results[1].formatted_address)
         console.log("ELEMENT", el)
+        }
+        console.log(el[0].value)
 
       }
     }

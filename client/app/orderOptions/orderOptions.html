@@ -1,149 +1,23 @@
 
- <!-- <div class="container">
- 	<div class="row cc-selector" ng-init="user.serviceType=0">
- 		<div class="col-md-8">
- 		<div class="col-md-4" align="center">
-            <input id="dineIn" type="radio" name="serviceType" value="0" ng-model="user.serviceType"/>
-        <label class="drinkcard-cc visa" for="dineIn"></label>
-             
- 		</div>
- 		<div class="col-md-4" align="center">
- 			<input id="takeAway" type="radio" name="serviceType" value="1" ng-model="user.serviceType"/>
-        <label class="drinkcard-cc mastercard" for="takeAway"></label>
-             
- 		</div>
- 		<div class="col-md-4" align="center">
- 			<input id="delivery" type="radio" name="serviceType" value="2" ng-model="user.serviceType"/>
-            <label class="drinkcard-cc delivery" for="delivery"></label>
- 		</div>
-
-
- 		<div layout="column" layout-padding ng-cloak ng-if="user.serviceType==0">
-  <br/>
-  <md-content class="md-no-momentum">
-    <md-input-container class="md-icon-float md-block">
-      <label>Name</label>
-    <input ng-model="user.name" type="text">
-    </md-input-container>
-    <md-input-container md-no-float class="md-block">
-      <input ng-model="user.phone" type="text" placeholder="Phone Number">
-    </md-input-container>
-    <md-input-container class="md-block">
-    <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
-    </md-input-container>
-  </md-content>
-</div>
-
-	<div layout="column" layout-padding ng-cloak ng-if="user.serviceType==1">
-  <br/>
-  <md-content class="md-no-momentum">
-    <md-input-container class="md-icon-float md-block">
-      <label>Name</label>
-     <input ng-model="user.name" type="text">
-    </md-input-container>
-    <md-input-container md-no-float class="md-block">
-     <input ng-model="user.phone" type="text" placeholder="Phone Number">
-    </md-input-container>
-    <md-input-container class="md-block">
-      <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
-    </md-input-container>
-   
-  </md-content>
-</div>
-
-	<div layout="column" layout-padding ng-cloak ng-if="user.serviceType==2">
-  <br/>
-  <md-content class="md-no-momentum">
-    <md-input-container class="md-icon-float md-block">
-      <label>Name</label>
-   <input ng-model="user.name" type="text">
-    </md-input-container>
-    <md-input-container md-no-float class="md-block">
-     <input ng-model="user.address1" type="text" placeholder="House number">
-    </md-input-container>
-    <md-input-container class="md-block">
-    <input ng-model="user.address2" type="text" placeholder="Street Name" ng-required="true">
-    </md-input-container>
-    <md-input-container md-no-float class="md-block">
-      <input ng-model="user.address" type="text" placeholder="Locality" >
-  </md-input-container>
-     <md-input-container md-no-float class="md-block">
-      <input ng-model="user.address3" type="text" placeholder="Area" >
-   </md-input-container>
-     <md-input-container md-no-float class="md-block">
-      <input ng-model="user.address4" type="text" placeholder="City" >
-  </md-input-container>
-   
-  </md-content>
-</div>
-
-
- 	</div>
-
-
- 	<div class="col-md-4">
-      <div ng-include src=" 'components/cart/cart.html' ">
-      </div>
-  <div class="continueButton"><button type="button" class="btn btn-primary  btn-block" ng-click="makePayment()">Continue</button></div>
- 	</div>
- </div> -->
-
-
-<!-- 
- <div class="row">
- 	<!-- <form name="" ng-submit="">
- 	</form> -->
-<!-- <div layout="column" layout-padding ng-cloak>
-  <br/>
-  <md-content class="md-no-momentum">
-    <md-input-container class="md-icon-float md-block">
-      <label>Name</label>
-      <md-icon md-svg-src="img/icons/ic_person_24px.svg" class="name"></md-icon>
-      <input ng-model="user.name" type="text">
-    </md-input-container>
-    <md-input-container md-no-float class="md-block">
-      <md-icon md-svg-src="img/icons/ic_phone_24px.svg"></md-icon>
-      <input ng-model="user.phone" type="text" placeholder="Phone Number">
-    </md-input-container>
-    <md-input-container class="md-block">
-      <md-icon md-svg-src="img/icons/ic_email_24px.svg" class="email"></md-icon>
-      <input ng-model="user.email" type="email" placeholder="Email (required)" ng-required="true">
-    </md-input-container>
-    <md-input-container md-no-float class="md-block">
-      <input ng-model="user.address" type="text" placeholder="Address" >
-      <md-icon md-svg-src="img/icons/ic_place_24px.svg" style="display:inline-block;"></md-icon>
-    </md-input-container>
-    <md-input-container class="md-icon-float md-icon-right md-block">
-      <label>Donation Amount</label>
-      <md-icon md-svg-src="img/icons/ic_card_giftcard_24px.svg"></md-icon>
-      <input ng-model="user.donation" type="number" step="0.01">
-      <md-icon md-svg-src="img/icons/ic_euro_24px.svg"></md-icon>
-    </md-input-container>
-  </md-content>
-</div> -->
- <!-- </div>
- </div> -->
-<div layout="row" class="container">
- <div class='userInfoContainer' flex-gt-sm="60" flex="80">
-<form name="userInfo" ng-submit="placeOrder()">
+<div layout="row">
+ <div class='userInfoContainer' flex-sm="99" flex>
+<form name="userInfo" ng-submit="showConfirm()">
   <md-radio-group ng-model="user.serviceType" layout="row" flex-offset="10">
       <md-radio-button value="0" class="md-primary">Take Out</md-radio-button>
-      <md-radio-button value="1" ng-disabled="true"> Delivery </md-radio-button>
+      <md-radio-button value="1" ng-disabled="true"> Delivery <md-tooltip >
+          Not available!
+        </md-tooltip>
+      </md-radio-button>
     </md-radio-group>
 
+    <div class="orderDetails">
     <md-input-container class="md-icon-float md-block">
       <label>Name(Optional)</label>
       <md-icon class="name personIcon"><i class="material-icons">person</i></md-icon>
       <input ng-model="user.name" type="text" name="name">
     </md-input-container>
 
-  <!--   <div ng-messages="userInfo.name.$error" ng-if="userInfo.name.$touched" class="error-message">
-        <p ng-message="minlength">Your name is too short.</p>
-        <p ng-message="maxlength">Your name is too long.</p>
-        <p ng-message="required">Your name is required.</p>
-    </div>
- -->
-    <md-input-container md-no-float class="md-block">
+    <md-input-container class="md-icon-float md-block">
       <md-icon  class="phoneIcon"><i class="material-icons">phone</i></md-icon>
       <input ng-minlength="10" ng-maxlength="10" ng-model="user.phone" type="number" ng-required="true" placeholder="Phone Number" name="number">
     </md-input-container>
@@ -162,7 +36,7 @@
         <p ng-message="email">Please add a valid email address.</p>
         <p ng-message="required">Your Email Id is required.</p>
     </div>
-    <md-input-container md-no-float class="md-icon-float md-icon-left md-block">
+    <md-input-container class="md-icon-float md-icon-left md-block">
          <md-icon style="display:inline-block;"><i class="material-icons">event_seat</i></md-icon>
       <input ng-model="user.seatNumber" type="text" placeholder="Seat Number" ng-disabled="true">
    
@@ -172,27 +46,37 @@
       <md-icon class="amountIcon"><i class="fa fa-rupee"></i></md-icon>
       <input ng-model="user.payableAmount" ng-readonly="true" ng-disabled="true">
     </md-input-container>
+  </div>
 
-
+  <md-input-container>
+  <label>Place order at</label>
+  <input aria-label="order time" type="text" dn-timepicker="{{models.format}}" ng-model="models.time" 
+  min-time="{{models.minTime}}" max-time="{{models.maxTime}}" step="{{models.step}}" />
+  </md-input-container>
      
 
     <md-radio-group ng-model="user.serviceType" layout="row" flex-offset="10">
     <label> Choose Payment Option </label> 
       <md-radio-button value="0" class="md-primary">Cash On Devlivery</md-radio-button>
-      <md-radio-button value="1" ng-disabled="true"> Online Payment </md-radio-button>
+      <md-radio-button value="1" ng-disabled="true"> Online Payment <md-tooltip >
+          Not available!
+        </md-tooltip>
+      </md-radio-button>
     </md-radio-group>
 
 
-    <div flex="60">
-      <md-button type="submit" ng-disabled="userInfo.$invalid || cart.length == 0" class=" md-raised md-accent md-hue-1" aria-label="confirmOrder">
+    <div flex>
+      <md-button animate-element type="submit" ng-disabled="userInfo.$invalid || cart.length == 0" class="md-raised md-warn btn-block" aria-label="confirmOrder">
         Confirm Order
       </md-button>
     </div>
 </form>
  </div>
- <div hide-xs hide-sm show-md show-gt-md flex="20" flex-offset="10">
+ <div hide-xs show-gt-md  flex-md="40" flex-gt-md="20" class="cartContainer"  layout-padding>
            <div ng-include src=" 'components/cart/cart.html' ">
            </div>
     </div>
 
 </div>
+
+

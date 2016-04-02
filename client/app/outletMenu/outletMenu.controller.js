@@ -86,7 +86,7 @@ angular.module('angularTestApp')
 
     $scope.proceedToCheckOut=function(){
       console.log("procedd to checjout", $scope.cart)
-        if($scope.cart.length > 0){
+        if($scope.cart && $scope.cart.length > 0){
           console.log("state go")
           $state.go('orderOptions');
         }
@@ -134,7 +134,9 @@ angular.module('angularTestApp')
     }).then(function(answer) {
           //$scope.status = 'You said the information was "' + answer + '".';
 
-          $scope.addItemToCart($scope.itemSelected.itm, 1, answer);
+         // $scope.addItemToCart($scope.itemSelected.itm, 1, answer);
+        $scope.addItemToCart($scope.itemSelected, 1, answer);
+
           $mdDialog.hide(answer);
         });
   };
@@ -208,6 +210,7 @@ angular.module('angularTestApp')
        // }
 
        // $scope.calculateBill();
+       console.log("ITEM TO DELETE", itemToDelete)
 
        $scope.cart = cart.deleteItemFromCart(itemToDelete,place);
       $scope.OrderBill= cart.getOrderBill();
@@ -268,7 +271,8 @@ angular.module('angularTestApp')
 function DialogController($scope, $mdDialog, dataToPass) {
   console.log("scope", $scope)
   console.log("data to pass", dataToPass)
-  $scope.itemSelected = dataToPass.itm
+  //$scope.itemSelected = dataToPass.itm
+  $scope.itemSelected = dataToPass;
   $scope.hide = function() {
     $mdDialog.hide();
   };

@@ -1,23 +1,23 @@
 
-  <div class="row" ng-show="!showSearch">
+<!--   <div class="row" ng-show="!showSearch">
       <div class="row">
         
-        <div class="col-md-11">
+        <div class="col-md-11 margined">
               <location-lookup ng-model="lookedUpLocation" limit-to="4" changelocation="getPlaces" callback="getPlaces">
               </location-lookup>
         </div>
 
-         <md-button class="searchButton" aria-label="Search" ng-click="showSearch = !showSearch"> 
+         <md-button animate-element  class="searchButton" aria-label="Search" ng-click="showSearch = !showSearch"> 
            <i class="material-icons">search
            </i>
         </md-button>
       </div>
   </div>
+ -->
 
-
-  <div class="col-md-12" ng-show="showSearch" class="searchBar">
+ <!--  <div class="col-md-12" ng-show="showSearch" class="searchBar">
               <div class="md-toolbar-tools">
-                  <md-button ng-click="showSearch = !showSearch;searchText='' " aria-label="Back">
+                  <md-button animate-element  ng-click="showSearch = !showSearch;searchText='' " aria-label="Back">
               <i class="material-icons">keyboard_backspace
               </i>
                  </md-button>
@@ -35,8 +35,10 @@
                         </div>
     
               </div>
-  </div>
+  </div> -->
 
+<!-- <div class="col-md-10" ng-include src=" '/app/main/searchField.html' ">
+     </div> -->
 
   <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -92,7 +94,7 @@
 
 
             <div class="col-md-6" align="right">
-              <md-button class="md-raised md-primary" ng-click="selectOutlet(place.id)">Place Order
+              <md-button animate-element class="md-raised md-primary" ng-click="selectOutlet(place.id)">Place Order
               </md-button>
             </div>
             </div>

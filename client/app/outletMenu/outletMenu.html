@@ -1,150 +1,4 @@
 <!-- 
- <div data-spy="scroll" data-target="#myScrollspy" data-offset="20">
-
-<div class="container">
-  <div class="row">
-    <nav class="col-md-2" id="myScrollspy">
-      <ul class="nav nav-pills nav-stacked">
-        <li ng-repeat="category in categories" ng-if="category.items.length > 0">
- 					<a ng-href="#{{category.id}}">{{category.name}}</a>
- 		</li>
-      </ul>
-    </nav>
-    <div class="col-md-6">
-      <div id="{{category.id}}" ng-repeat="category in categories">
- <accordion close-others="false">
-    <accordion-group heading="{{item.name}}" ng-repeat="item in category.items">
-    <div class="row">
-    	<div class="col-md-2">
-    		<img ng-if="item.image != null" src="item.image" class="img-rounded" width="50px" height="30px"></img>
-    		 <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="img-rounded" width="50px" height="30px"></img>
-
-    	</div>
-    	<div class='col-md-10'>
-    		<div align="right" class="itemPrice">
-    		   <div>
-    		   	<span>Price: <i class="fa fa-inr"></i></span> 
-    		   	{{item.price}}
-    		   </div>
-    		   <div ng-if="item.price_half!== null || 0 || undefined">
-    		   <span>Price Half: <i class="fa fa-inr"></i></span>
-    		   {{item.price_half}}
-    		   </div>
-
-    		</div>
-    	</div>
-    </div>
-    <div class="col-md-offset-2">
-    	{{item.description}}
-    </div>
-      <button ng-if="item.price_half=== null || 0 || undefined" type="button" ng-click="addItemToCart(item)" class="btn btn-primary btn-block">Add to Cart</button>
-
-       <button ng-if="item.price_half !== null || 0 || undefined" type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#myModal" ng-click="checkForOptions(item)">Add to Cart</button>
-     
-
-
-    </accordion-group>
-  </accordion>
-        <span ng-if="category.items.length > 0"></br></span>
-	   </div>
-       </div>
-       <div class="col-md-4">
-       	<div class="panel panel-default">
-  <div align="right" class="panel-heading">Your Cart <span align="right"><img src="assets/images/cartIcon.png" width="50px" height="50px"></span></div>
-  <div class="panel-body">
-  	<div ng-if="!cart || cart.length==0">
-  	</div>
-
-  	<div ng-if="cart.length > 0">
-  	<div>Your Cart</div>
-  	<ul class="list-group">
-  <li class="list-group-item cartdata modalOption row" ng-repeat="item in cart">
-  	<span class="col-md-6">{{item.name}}<span ng-if="item.isHalf">(Half)</span></span>
-  	<span class="row col-md-6"><span class="btn glyphicon glyphicon-plus-sign col-md-2 addButton"></span><span class="col-md-2">{{item.quantity}}</span><span class="btn glyphicon glyphicon-minus-sign col-md-2 subButton"></span></span>
-  </li>
-  
-</ul>
-<div class="row itemPrice">
-  <span class="col-md-6">Subtotal: </span><div class="col-md-6" align="right">{{OrderBill.totalBaseAmount}}</div>
-  <span class="col-md-6">Tax: </span><div class="col-md-6" align="right">{{OrderBill.taxAmount}}</div>
-
-</div>
-
-</div>
-</div>
-
-
-<div class="panel-footer" align="right">
-	Total: {{OrderBill.totalAmount}}
-</div>
-<div class="continueButton"><button type="button" class="btn btn-primary  btn-block" ng-click="proceedToCheckOut()">Continue</button></div>
-</div>
-       </div>
-        
-
-    </div>
-
-
-</div>
-
-
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
-
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title"><span class="modalHeading">Good Choice! Let's Customize ? </span></h4>
-      </div>
-      <div class="modal-body">
-        <md-radio-group ng-model="selectedValue">
-      <div class="row">
-        <div flex layout='row' layout-padding layout-align="start center" >
-          <div flex style="max-width:100px;">
-            <span class='modalOption'>Half</span>
-          </div>
-          <md-radio-button flex
-              value="0.5"
-              class="md-primary" >
-            <i class="fa fa-inr"></i>{{itemSelected.price_half}}
-          </md-radio-button>
-        </div>
-      </div>
-      <div class="row">
-        <div flex layout='row' layout-padding layout-align="start center" >
-          <div flex style="max-width:100px;">
-           <span class='modalOption'>Full</span>
-          </div>
-          <md-radio-button flex
-              value="1"
-              class="md-primary" >
-            <i class="fa fa-inr"></i>{{itemSelected.price}}
-          </md-radio-button>
-        </div>
-      </div>
-    </md-radio-group>
-</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="addItemToCart(itemSelected, 1, selectedValue)">Confirm</button>
-      </div>
-    </div>
-
-  </div>
-</div>
-</div>
-
-</div>
- -->
-<!-- <md-list>
-    <md-list-item>
-    <md-icon class="md-avatar-icon" md-svg-icon="communication:phone"></md-icon>
-    <span>Item content in list</span>
-  </md-list-item>
-</md-list>
- -->
-
-
-
     <md-input-container>
         <md-select ng-model="userSelect.selectedCategory" aria-label="Select a Category"  ng-change="changeItemScroll()"  class="stickySelect">
           <md-option ng-value="$index" ng-repeat="category in categories">
@@ -155,10 +9,12 @@
       </md-input-container>
 
      <div class="itemsContainer" layout="row" layout-margin="20px"  >
-<md-virtual-repeat-container id="vertical-container" md-top-index="userSelect.topIndex" flex-gt-sm="80" flex-sm="99" flex-xs="99" >
+<md-virtual-repeat-container id="vertical-container" md-top-index="userSelect.topIndex" flex-gt-sm="70" flex-sm="99" flex-xs="99" >
       <md-list>
         <md-list-item md-virtual-repeat="item in items"
-            class="repeated-item md-3-line" ng-class="{header: item.header}">
+            class="repeated-item md-3-line" ng-class="{'highlightItem':hovering}"
+    ng-mouseenter="hovering=true"
+    ng-mouseleave="hovering=false" >
    <img ng-if="item.image != null"   src="{{item.image}}" class="md-avatar"></img>
     <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="md-avatar"></img>          
   <div class="md-list-item-text" layout="column">
@@ -170,11 +26,11 @@
    </p>
   </div>
 
- <md-button class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="openTab(item, $event)" ng-if="item.itm.price_half !== null || 0 || undefined">
+ <md-button animate-element class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="openTab(item, $event)" ng-if="item.itm.price_half !== null || 0 || undefined">
     <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
   </md-button>
 
-   <md-button  ng-if="item.itm.price_half=== null || 0 || undefined" class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="addItemToCart(item.itm)">
+   <md-button  animate-element ng-if="item.itm.price_half=== null || 0 || undefined" class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="addItemToCart(item.itm)">
     <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
   </md-button>
         </md-list-item>
@@ -184,15 +40,72 @@
       <div hide-xs hide-sm show-md show-gt-md flex>
            <div ng-include src=" 'components/cart/cart.html' ">
            </div>
-       <md-button ng-if="cart.length > 0" class="md-accent md-hue-3" aria-label="ProceedToChecout" ng-click="proceedToCheckOut()">
-        Proceed to checkout
+       <md-button  animate-element ng-if="cart.length > 0" class="md-primary md-raised btn-block md-cornered" aria-label="ProceedToChecout" ng-click="proceedToCheckOut()">
+      View Cart      
       </md-button>
     </div>
 
-    <div show-xs show-sm hide-md hide-lg flex class="cartFabIcon">
-       <md-button ng-click="proceedToCheckOut()" animate-on-change="cart.length"class="md-fab" aria-label="Cart">
+    <div show-xs show-sm hide-md hide-lg flex class="cartFabIcon" >
+       <md-button  animate-element ng-click="proceedToCheckOut()" animate-on-change="cart.length"class="md-fab" aria-label="Cart">
             <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{cart.length}}</span>
         </md-button>
     </div>
+    </div> -->
+
+
+<md-tabs md-swipe-content="true" class="tabbed">
+  <md-tab ng-repeat="category in categories" md-on-select="onTabSelected(tab)">
+    <md-tab-label>
+      {{category.name}}
+    </md-tab-label>
+    <md-tab-body>
+             <div class="itemsContainer" layout="row" layout-margin="20px"  >
+<!-- <md-virtual-repeat-container id="vertical-container" md-top-index="userSelect.topIndex" flex-gt-sm="70" flex-sm="99" flex-xs="99" > -->
+      <md-list flex-gt-sm="70" flex-md="70" flex-sm="90" flex-xs="90">
+        <md-list-item ng-repeat="item in category.items"
+            class="md-3-line" ng-class="{'highlightItem':hovering}"
+    ng-mouseenter="hovering=true"
+    ng-mouseleave="hovering=false" >
+   <img ng-if="item.image != null"   src="{{item.image}}" class="md-avatar"></img>
+    <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="md-avatar"></img>          
+  <div class="md-list-item-text" layout="column">
+   <md-text-float class="itemName">{{item.name}}</md-text-float>
+   <p><span>Price: <i class="fa fa-inr"></i>
+   </span>{{item.price}}</p>
+   <p ng-if="item.price_half > 0"><span>Price-Half: <i class="fa fa-inr"></i>
+   </span>{{item.price_half}}
+   </p>
+  </div>
+
+ <md-button animate-element class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="openTab(item, $event)" ng-if="item.price_half !== null || 0 || undefined">
+    <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
+  </md-button>
+
+   <md-button  animate-element ng-if="item.price_half=== null || 0 || undefined" class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="addItemToCart(item)">
+    <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
+  </md-button>
+        </md-list-item>
+      </md-list>
+<!--       </md-virtual-repeat-container>
+ -->   
+<div hide-xs hide-sm show-md show-gt-md flex>
+           <div ng-include src=" 'components/cart/cart.html' ">
+           </div>
+       <md-button  animate-element ng-if="cart.length > 0" class="md-primary md-raised btn-block md-cornered" aria-label="ProceedToChecout" ng-click="proceedToCheckOut()">
+      View Cart      
+      </md-button>
     </div>
 
+    <div show-xs show-sm hide-md hide-lg flex class="cartFabIcon" >
+       <md-button  animate-element ng-click="proceedToCheckOut()" animate-on-change="cart.length"class="md-fab" aria-label="Cart">
+            <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{cart.length}}</span>
+        </md-button>
+    </div>
+
+
+  </div>
+    </md-tab-body>
+  </md-tab>
+
+  
+</md-tabs>

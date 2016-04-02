@@ -21,10 +21,19 @@ angular.module('angularTestApp')
 // }, $log.error);
 // }
 
+   $scope.placeLatLng = {lat:$stateParams.lat , lng: $stateParams.lng};
 
 
  
 $scope.getPlaces = function(place, loc){
+  console.log("place in location", place)
+  console.log("loc in location", loc)
+   if((!place || (typeof (place == 'undefined'))) && ($stateParams.lat != '' || null || undefined && $stateParams.lng != '' || null || undefined)){
+    place= {};
+    place.lat = $stateParams.lat ;
+    place.lng =  $stateParams.lng;
+  }
+
       getPlaces.places(place, loc)
       .then(function(data){
         console.log("data final is", data)
@@ -45,7 +54,7 @@ init();
 $scope.selectOutlet = function(selectedPlaceId){
   console.log("setting id", selectedPlaceId)
 getOutletMenu.setId(selectedPlaceId);
-$state.go('outletMenu')
+$state.go('outletMenu', {outletId: selectedPlaceId})
 }
 
   });

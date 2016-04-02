@@ -1,13 +1,33 @@
 'use strict';
 
 angular.module('angularTestApp')
-  .controller('OrderOptionsCtrl', function ($scope, cart, $http, $state) {
+  .controller('OrderOptionsCtrl', function ($scope, $filter, cart, $http, $state, $mdDialog) {
    // $scope.message = 'Hello';
 
    var init=function(){
    	$scope.cart= cart.getCart();
    	$scope.OrderBill=cart.getOrderBill();
     $scope.date = new Date();
+    $scope.currentTime = $filter('date')($scope.date, 'shortTime');
+    $scope.maxTime = $filter('date')($scope.date.setHours($scope.date.getHours() + 3) , 'shortTime');
+
+    console.log("current", $scope.currentTime);
+    console.log("max", $scope.maxTime)
+    console.log("Macx compare", $scope.maxTime > '11:59 p.m')
+    console.log($scope.currentTime > $scope.maxTime)
+    console.log($scope.currentTime < $scope.maxTime)
+    if($scope.maxTime > '11:59 p.m'){
+      console.log("settomg time")
+      $scope.maxTime = $filter('date')($scope.date.setHours('11, 59, 59') , 'shortTime');
+    }
+
+    $scope.models = {
+    time: new Date(),
+    format: 'h:mm a',
+    minTime: $scope.currentTime,
+    maxTime: $scope.maxTime,
+    step: '15'
+}
     $scope.user={'serviceType': 0, 'payableAmount': $scope.OrderBill.totalAmount, 'paymentType': 0}
    }
 
@@ -24,6 +44,24 @@ angular.module('angularTestApp')
     return userDetails;
    }
 
+   $scope.showConfirm = function(ev) {
+    // Appending dialog to document.body to cover sidenav in docs app
+    var confirm = $mdDialog.confirm()
+          .title('Place Order?')
+          .textContent('Are you sure you would like to place your order')
+          .ariaLabel('Place order confimation')
+          .targetEvent(ev)
+          .ok('Place!')
+          .cancel('Cancel!');
+    $mdDialog.show(confirm).then(function() {
+      $scope.placeOrder();
+      $mdDialog.hide();
+
+    }, function() {
+      $mdDialog.hide();
+    });
+  };
+
    $scope.placeOrder= function(){
     var user= userModel();
     console.log("cart", $scope.cart)
@@ -35,7 +73,7 @@ angular.module('angularTestApp')
         'payment': 0,
          'user': 2, 
          'place': 1
-
+      
     }).success(function(response){
           console.log("response posting order", response);
           $state.go('orderPlaced');

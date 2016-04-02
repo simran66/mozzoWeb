@@ -14,7 +14,9 @@ angular.module('angularTestApp', [
 'angularUtils.directives.dirPagination',
 'ngAnimate',
 'ui.bootstrap',
-'ui.bootstrap.datetimepicker'
+'ui.bootstrap.position',
+'ui.bootstrap.timepicker',
+'dnTimepicker',
 ])
   .config(function ($stateProvider,  $resourceProvider, $authProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $urlRouterProvider
@@ -128,5 +130,34 @@ $authProvider.google({
       
    }
 })
+    }
+  })
+// .directive('animateElement', ['$animate','$timeout',
+//     function ($animate, $timeout) {
+//         return function (scope, elem, attrs) {
+//             elem.bind("mouseover", function(hover) {
+//               if (hover) 
+//                   $animate.addClass(elem, 'animated zoomIn');
+//               else 
+//                   $animate.removeClass(elem, 'animated zoomIn');   
+//             }
+//           }
+
+// }]);
+
+.directive('animateElement', function ($animate, $timeout) {
+    return function (scope, element, attrs) {
+      console.log("element directive")
+         element.bind("mouseover", function(hover) {
+        if (hover) {
+          //$animate.addClass(element, 'animated zoomIn');
+          element.addClass('animated pulse');
+        } 
+
+         $timeout(function() {
+          element.removeClass('animated pulse');
+        }, 1000); 
+        
+      })   
     }
   });

@@ -7,8 +7,11 @@ angular.module('angularTestApp')
 
     var formatLatLng= function(lat, lng){
       var latlng = [];
-  latlng.push(lat.toFixed(0))
-  latlng.push(lng.toFixed(0))
+      console.log("lat", lat)
+      console.log("lng", lng)
+      console.log(typeof lat)
+  latlng.push(parseFloat(lat).toFixed(0))
+  latlng.push(parseFloat(lng).toFixed(0))
       var latLngString = latlng.join(',');
         return latLngString
    }
@@ -36,9 +39,13 @@ return results
 
       obj.places = function(place, loc){
         var deferred = $q.defer();
+        console.log("place", place)
          if(place){
-       var latitude = place.geometry.location.lat();
-       var longitude = place.geometry.location.lng();
+          console.log("In if")
+      // var latitude = place.geometry.location.lat();
+       //var longitude = place.geometry.location.lng();
+       var latitude = place.lat;
+       var longitude = place.lng;
       var latLngString = formatLatLng(latitude, longitude);
         var res = obj.getAll().get({dist:'1000', point:latLngString});
        res.$promise.then(function(data){

@@ -1,4 +1,4 @@
-.opt{
+/*.opt{
 	background-color: yellow;
 }
 
@@ -18,6 +18,8 @@
        -moz-filter: none;
             filter: none;
 }
+
+
 .drinkcard-cc{
     cursor:pointer;
     background-size:contain;
@@ -37,13 +39,14 @@
             filter: brightness(1.2) grayscale(.5) opacity(.9);
 }
 
-/* Extras */
 a:visited{color:#888}
 a{color:#444;text-decoration:none;}
 p{margin-bottom:.3em;}
+*/
 
-
-
+.orderDetails{
+  margin-top: 30px;
+}
 
 .container {
     margin-top: 10px;
@@ -68,6 +71,11 @@ p{margin-bottom:.3em;}
 
 .modalOption{
     color:rgba(33,150,243,0.87);
+}
+
+
+md-input-container {
+  padding:  20px;
 }
 
 .cartdata{
@@ -95,19 +103,27 @@ p{margin-bottom:.3em;}
 }
 
 
-md-input-container{
+/*md-input-container{
   margin: 9px;
   padding: 5px;
 }
-
+*/
 .subButton{
   color: red;
 }
 
 .userInfoContainer{
-  background-color: rgba(0, 0, 0, 0.03)
-  margin: 20px;
-  padding: 10px;
+  background: rgba(0, 0, 0, 0.02);
+  margin-left: 20px !important;
+  margin-top: 30px !important;
+  padding: 15px !important;
+
+}
+
+.cartContainer{
+  margin-top: 30px !important;
+  margin-left: 2px;
+  padding: 5px !important;
 }
 
 
