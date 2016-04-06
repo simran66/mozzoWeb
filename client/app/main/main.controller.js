@@ -19,7 +19,7 @@ $scope.getResults = function(){
 	 if($scope.selectedPlace)
 	 $state.go('locate', {lat:$scope.selectedPlace.lat, lng: $scope.selectedPlace.lng})
      else
-     $state.go('locate')
+   $state.go('locate');
 }
     
   });

@@ -1,22 +1,22 @@
 'use strict';
 
-function DialogController($scope, $mdDialog, dataToPass) {
-  console.log("scope", $scope)
-  console.log("data to pass", dataToPass)
-  //$scope.itemSelected = dataToPass.itm
-  $scope.itemSelected = dataToPass;
-  $scope.hide = function() {
-    $mdDialog.hide();
-  };
-  $scope.cancel = function() {
-    $mdDialog.cancel();
-  };
-  $scope.answer = function(answer) {
-    console.log("selected choice is", answer)
-    console.log("data to pass", dataToPass)
-    $mdDialog.hide(answer);
-  };
-}
+// function DialogController($scope, $mdDialog, dataToPass) {
+//   console.log("scope", $scope)
+//   console.log("data to pass", dataToPass)
+//   //$scope.itemSelected = dataToPass.itm
+//   $scope.itemSelected = dataToPass;
+//   $scope.hide = function() {
+//     $mdDialog.hide();
+//   };
+//   $scope.cancel = function() {
+//     $mdDialog.cancel();
+//   };
+//   $scope.answer = function(answer) {
+//     console.log("selected choice is", answer)
+//     console.log("data to pass", dataToPass)
+//     $mdDialog.hide(answer);
+//   };
+// }
 
 
 angular.module('angularTestApp')
@@ -33,6 +33,8 @@ angular.module('angularTestApp')
          console.log("resource is", res)
          $scope.userSelect={'selectedCategory': 0, 'topIndex': 0};
          console.log("id",id)
+         $scope.cart= cart.getCart();
+         $scope.OrderBill=cart.getOrderBill();
          place = getPlaces.getAll().get({id: id});
          console.log("returned places", place)
          res.$promise.then(function(data){
@@ -114,7 +116,7 @@ angular.module('angularTestApp')
 
    $scope.showToast = function(actionType){
 
-    var messages =['Item has been added to cart', 'Item has been deleted from cart'];
+    var messages =['Item has been added to cart', 'Item has been deleted from cart', 'No items to delete from cart.', 'Your cart has been deleted.', 'There is nothing to delete from your cart.'];
 
      $mdToast.show(
                          $mdToast.simple()
@@ -142,23 +144,23 @@ angular.module('angularTestApp')
    }
 
 
-   $scope.showTabDialog = function(ev) {
-    $mdDialog.show({
-      templateUrl: 'app/outletMenu/itemOptions.tmpl.html',
-     parent: angular.element(document.body),
-      locals:{dataToPass: $scope.itemSelected},                
-      controller: DialogController,
-      targetEvent: ev,
-      clickOutsideToClose:true
-    }).then(function(answer) {
-          //$scope.status = 'You said the information was "' + answer + '".';
+  //  $scope.showTabDialog = function(ev) {
+  //   $mdDialog.show({
+  //     templateUrl: 'app/outletMenu/itemOptions.tmpl.html',
+  //    parent: angular.element(document.body),
+  //     locals:{dataToPass: $scope.itemSelected},                
+  //     controller: DialogController,
+  //     targetEvent: ev,
+  //     clickOutsideToClose:true
+  //   }).then(function(answer) {
+  //         //$scope.status = 'You said the information was "' + answer + '".';
 
-         // $scope.addItemToCart($scope.itemSelected.itm, 1, answer);
-        $scope.addItemToCart($scope.itemSelected, 1, answer);
+  //        // $scope.addItemToCart($scope.itemSelected.itm, 1, answer);
+  //       $scope.addItemToCart($scope.itemSelected, 1, answer);
 
-          $mdDialog.hide(answer);
-        });
-  };
+  //         $mdDialog.hide(answer);
+  //       });
+  // };
 
  
 
@@ -191,31 +193,32 @@ angular.module('angularTestApp')
         console.log("place is", place)
        $scope.cart = cart.addToCart(item,place);
        $scope.OrderBill= cart.getOrderBill();
+       //$scope.sumOfItems = cart.sumOfItems();
        console.log("update cart", $scope.cart)
 
        $scope.showToast(0);
     };
 
-    $scope.changeItemScroll=function(){
-          var temp=0;
-          if($scope.userSelect.topIndex !== $scope.userSelect.selectedCategory){
-                for(var i=0; i<=$scope.userSelect.selectedCategory; i++)
-                    var temp = temp + $scope.categories[$scope.userSelect.selectedCategory].items.length;
-                $scope.userSelect.topIndex = temp;
-          }     
-    }
+    // $scope.changeItemScroll=function(){
+    //       var temp=0;
+    //       if($scope.userSelect.topIndex !== $scope.userSelect.selectedCategory){
+    //             for(var i=0; i<=$scope.userSelect.selectedCategory; i++)
+    //                 var temp = temp + $scope.categories[$scope.userSelect.selectedCategory].items.length;
+    //             $scope.userSelect.topIndex = temp;
+    //       }     
+    // }
 
 
   
-        $scope.$watch(function() {
-                return $scope.userSelect.topIndex
-         }, function(topIndex) {
-          console.log("items", $scope.items)
-          console.log("index", topIndex)
-          console.log($scope.items[topIndex])
-          if($scope.items.length > 0 && $scope.items[topIndex] !== null || undefined)
-         $scope.userSelect.selectedCategory=$scope.items[topIndex].categoryIndex;
-        });
+    //     $scope.$watch(function() {
+    //             return $scope.userSelect.topIndex
+    //      }, function(topIndex) {
+    //       console.log("items", $scope.items)
+    //       console.log("index", topIndex)
+    //       console.log($scope.items[topIndex])
+    //       if($scope.items.length > 0 && $scope.items[topIndex] !== null || undefined)
+    //      $scope.userSelect.selectedCategory=$scope.items[topIndex].categoryIndex;
+    //     });
 
 
     $scope.deleteItemFromCart = function(itemToDelete){
@@ -230,10 +233,14 @@ angular.module('angularTestApp')
 
        // $scope.calculateBill();
        console.log("ITEM TO DELETE", itemToDelete)
-
+           if($scope.cart && $scope.cart.length > 0){
        $scope.cart = cart.deleteItemFromCart(itemToDelete,place);
       $scope.OrderBill= cart.getOrderBill();
-      $scope.showToast(1);
+      //$scope.sumOfItems = cart.sumOfItems();
+      $scope.showToast(1);}
+      else{
+              $scope.showToast(2);
+      }
 
     };
 
@@ -243,9 +250,14 @@ angular.module('angularTestApp')
        //      $scope.cart.splice(checkBool, 1);
        // }
        // $scope.calculateBill();
-
+           if($scope.cart && $scope.cart.length > 0){
        $scope.cart = removeItemFromCart(itemToRemove,place)
       $scope.OrderBill= cart.getOrderBill();
+    }else{
+         $scope.showToast(2);
+    }
+      //$scope.sumOfItems = cart.sumOfItems();
+
 
     }
 
@@ -253,8 +265,17 @@ angular.module('angularTestApp')
     $scope.emptyCart = function(){
         // $scope.cart=[];
         // $scope.OrderBill={};
+        if($scope.cart.length > 0){
         $scope.cart=cart.emptyCart();
         $scope.OrderBill={};
+        $scope.showToast(3);
+
+      }else{
+        $scope.showToast(4);
+
+      }
+       // $scope.sumOfItems = cart.sumOfItems();
+
     };
 
     // var calculateTax=function(){

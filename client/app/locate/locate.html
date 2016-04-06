@@ -40,7 +40,7 @@
 <!-- <div class="col-md-10" ng-include src=" '/app/main/searchField.html' ">
      </div> -->
 
-  <div class="row">
+<!--   <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <md-virtual-repeat-container id="vertical-container">
       <div md-virtual-repeat="place in places  | filter:{name:searchText}"
@@ -64,10 +64,10 @@
                          </span>
                     </div>
                   
-                   <!--  
+                    
                     <div class="md-subhead placeDesc">{{place.description}}
                     </div>
- -->
+
                       <span class="circle-singleline" flex="20" layout-align="end end">
                            2 KM
                       </span>
@@ -106,6 +106,25 @@
 
   <div class="col-md-4">
   </div>
-  </div>
+  </div> -->
 
-            
+ <!--  <div ng-include src=" 'app/main/searchField.html' ">
+     </div> -->
+        <div class="listContainer">
+
+          <md-content>
+         <md-list>
+            <md-list-item animate-element ng-click="selectOutlet(place.id)" class="md-3-line placeContainer" ng-repeat="place in places">
+               <img src="/assets/images/food.jpg" class="md-avatar" alt="{{place.name}}" />
+              <div class="md-list-item-text" layout="column">
+              <h5 class="md-headline ">{{ place.name }}
+                      <!--   <span class="md-secondary"><span class="hearts">  3</span>
+                         <span class="loves"><i class="material-icons">favorite</i></span></span> --></h5>
+              <md-divider ></md-divider>
+              <h6 class="md-subhead">{{ item.description || 'The restaurant description is not available at the moment.' }}</h6>
+              <p><span class="footerText">Min. Delivery Order:</span><i class="fa fa-inr"></i> {{place.min_order_value}}</p>
+              </div> 
+            </md-list-item>
+           </md-list>
+         </md-content>
+        </div>

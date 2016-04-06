@@ -17,6 +17,8 @@ angular.module('angularTestApp', [
 'ui.bootstrap.position',
 'ui.bootstrap.timepicker',
 'dnTimepicker',
+'ngStorage',
+'ngCurtain'
 ])
   .config(function ($stateProvider,  $resourceProvider, $authProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
     $urlRouterProvider
@@ -30,8 +32,8 @@ angular.module('angularTestApp', [
     // delete $httpProvider.defaults.headers.common['X-Requested-With'];
 
      $mdThemingProvider.theme('default')
-      .primaryPalette('deep-orange')
-      .accentPalette('orange');
+      .primaryPalette('light-blue')
+      .accentPalette('light-blue');
 
     $mdThemingProvider.theme('altTheme')
       .primaryPalette('brown')
@@ -151,11 +153,10 @@ $authProvider.google({
          element.bind("mouseover", function(hover) {
         if (hover) {
           //$animate.addClass(element, 'animated zoomIn');
-          element.addClass('animated pulse');
+          element.addClass('animated pulse selected');
         } 
-
          $timeout(function() {
-          element.removeClass('animated pulse');
+          element.removeClass('animated pulse selected');
         }, 1000); 
         
       })   

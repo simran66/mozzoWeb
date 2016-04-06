@@ -1,0 +1,21 @@
+<!-- <div class="col-md-12">
+This is the home view.
+</div>
+ -->
+
+ <div flex ng-cloak>
+  <md-grid-list
+        md-cols="1" md-cols-sm="2" md-cols-md="3" md-cols-gt-md="6"
+        md-row-height-gt-md="1:1" md-row-height="4:3"
+        md-gutter="8px" md-gutter-gt-sm="4px" >
+    <md-grid-tile animate-element ng-repeat="tile in tiles track by $index"
+                  md-colspan-sm="1"
+                  md-colspan-xs="1"
+                  ng-animate="{enter: 'animated rotateIn', leave: 'animated rotateOut'}">
+
+                   <img src="http://lorempixel.com/400/200/nightlife/{{$index+1}}"></img>
+      <md-grid-tile-footer><span star-rating rating-value="$index" max="10"></span> 
+    </md-grid-tile-footer>
+    </md-grid-tile>
+  </md-grid-list>
+</div>

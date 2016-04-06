@@ -12,6 +12,8 @@
     <meta name="viewport" content="width=device-width">
     <link rel="icon" type="image/ico" href="favicon.ico">
     <link rel="stylesheet" href="bower_components/angular-css/animate.css" />
+    <link rel="stylesheet" href="bower_components/ng-curtain/ng-curtain.css">
+
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
@@ -19,6 +21,9 @@
       <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
       <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
       <link rel="stylesheet" href="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.css" />
+<!--       <link rel="stylesheet" href="bower_components/curtainjs/js/jquery.curtain.css">
+ -->
+
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -27,6 +32,7 @@
       <link rel="stylesheet" href="app/account111/login/login.css">
       <link rel="stylesheet" href="app/admin111/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/home/home.css">
       <link rel="stylesheet" href="app/locate/locate.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/orderOptions/orderOptions.css">
@@ -82,6 +88,8 @@
       <script src="bower_components/satellizer/satellizer.js"></script>
       <script src="bower_components/angularUtils-pagination/dirPagination.js"></script>
       <script src="bower_components/angular-ui-bootstrap-datetimepicker/datetimepicker.js"></script>
+       <!-- <script src="bower_components/curtainjs/js/jquery.curtain.js"></script>-->
+      <script src="bower_components/ngstorage/ngStorage.js"></script>
       <!-- endbower -->
       <script src="bower_components/angular-ui-bootstrap/src/timepicker/timepicker.js"></script> 
       <script src="bower_components/angular-ui-bootstrap/src/position/position.js"></script> 
@@ -89,6 +97,9 @@
       <script src="bower_components/angular-timepicker/dist/angular-timepicker.js"></script>
 
     <!-- endbuild -->
+
+          <script src="bower_components/ng-curtain/ng-curtain.js"></script>
+
 
         
         <!-- build:js({.tmp,client}) app/app.js -->
@@ -101,6 +112,9 @@
           <script src="app/account111/signup/signup.controller.js"></script>
           <script src="app/admin111/admin.controller.js"></script>
           <script src="app/admin111/admin.js"></script>
+          <script src="app/home/home.controller.js"></script>
+          <script src="app/home/home.js"></script>
+          <script src="app/home/main.js"></script>
           <script src="app/locate/locate.controller.js"></script>
           <script src="app/locate/locate.js"></script>
           <script src="app/main/main.controller.js"></script>

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularTestApp')
-  .controller('LocateCtrl', function ($scope, $state, $stateParams, getPlaces, location, reverseGeocoder, $log, getOutletMenu, $mdBottomSheet,$mdSidenav, $mdDialog) {
+  .controller('LocateCtrl', function ($scope, $state, $stateParams, getPlaces, location, reverseGeocoder, $log, getOutletMenu, $mdBottomSheet,$mdSidenav, $mdDialog, cart) {
    location.get(angular.noop, angular.noop);
 
 // var formatLatLng= function(){
@@ -28,6 +28,8 @@ angular.module('angularTestApp')
 $scope.getPlaces = function(place, loc){
   console.log("place in location", place)
   console.log("loc in location", loc)
+    //$scope.selectedPlace = place
+
    if((!place || (typeof (place == 'undefined'))) && ($stateParams.lat != '' || null || undefined && $stateParams.lng != '' || null || undefined)){
     place= {};
     place.lat = $stateParams.lat ;
@@ -37,6 +39,8 @@ $scope.getPlaces = function(place, loc){
       getPlaces.places(place, loc)
       .then(function(data){
         console.log("data final is", data)
+        if(place)
+        $state.go('locate', {lat:place.lat , lng:place.lng })
         $scope.places = data;
       })
 }
@@ -47,6 +51,7 @@ var init = function(){
   $scope.currentPage = 1;
   $scope.pageSize = 7;
   $scope.getPlaces ();
+  cart.emptyCart();
 
 }
 init();
@@ -55,6 +60,7 @@ $scope.selectOutlet = function(selectedPlaceId){
   console.log("setting id", selectedPlaceId)
 getOutletMenu.setId(selectedPlaceId);
 $state.go('outletMenu', {outletId: selectedPlaceId})
+
 }
 
   });

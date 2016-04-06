@@ -9,17 +9,16 @@ angular.module('angularTestApp')
    	$scope.OrderBill=cart.getOrderBill();
     $scope.date = new Date();
     $scope.currentTime = $filter('date')($scope.date, 'shortTime');
+    if($scope.date.getHours() + 3 < '23')
     $scope.maxTime = $filter('date')($scope.date.setHours($scope.date.getHours() + 3) , 'shortTime');
-
+     else
+    $scope.maxTime = $filter('date')($scope.date.setHours($scope.date.getHours() + ('23:59' - $scope.date.getHours())) , 'shortTime');
     console.log("current", $scope.currentTime);
     console.log("max", $scope.maxTime)
     console.log("Macx compare", $scope.maxTime > '11:59 p.m')
     console.log($scope.currentTime > $scope.maxTime)
     console.log($scope.currentTime < $scope.maxTime)
-    if($scope.maxTime > '11:59 p.m'){
-      console.log("settomg time")
-      $scope.maxTime = $filter('date')($scope.date.setHours('11, 59, 59') , 'shortTime');
-    }
+   
 
     $scope.models = {
     time: new Date(),
@@ -76,6 +75,7 @@ angular.module('angularTestApp')
       
     }).success(function(response){
           console.log("response posting order", response);
+          cart.emptyCart();
           $state.go('orderPlaced');
 
     }).error(function(err){

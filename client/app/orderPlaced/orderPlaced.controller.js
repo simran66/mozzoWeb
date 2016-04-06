@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularTestApp')
-  .controller('OrderPlacedCtrl', function ($scope, $timeout, $state, $mdDialog) {
+  .controller('OrderPlacedCtrl', function ($scope, $timeout, $state, $mdDialog, cart) {
     //$scope.message = 'Hello';
 
 
@@ -30,7 +30,8 @@ var confirm=$mdDialog.confirm()
           .ok('Confirm')
           .cancel('Cancel');
     $mdDialog.show(confirm).then(function() {
-      $state.go('main')
+      cart.emptyCart();
+      $state.go('main');
     }, function() {
          $scope.startTimeOut();
     });

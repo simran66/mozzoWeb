@@ -16,9 +16,18 @@
   height: 100vh;
 }
 
+
+.md-button.md-fab.md-fab-bottom-right {
+  bottom: 60px !important;
+}
 .itemsContainer{
-  margin: 50px;
+  margin: 10px;
   background-color: rgb(0,0,0) transparent !important;
+  width: 90%;
+}
+
+.placeContainer{
+  width:100%;
 }
  .itemsContainer.repeated-item {
   border-bottom: 1px solid #ddd;

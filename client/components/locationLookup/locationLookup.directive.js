@@ -104,10 +104,11 @@ angular.module('angularTestApp')
     return {
       restrict: 'E',
       scope: { results: '=',
+      selectedLoc:' =',
        },
 
      // template: '<div id="custom-search-input"><div class="input-group col-md-12"><input type="text" class="  search-query form-control" placeholder="Search" /> </div> </div>',
-      template: '<md-input-container class="md-input-focused searchText md-input-has-value md-icon-float md-icon-right md-block addedMargins"><label>Location</label><input type="text"  class="addedMargins md-input-focused md-input-has-value" md-autofocus="autofocus"><md-icon><i class="material-icons" style="display:inline-block;">edit_location</i></md-icon></md-input-container>',
+      template: '<md-input-container class="md-input-focused searchText md-input-has-value md-icon-float md-icon-right md-block addedMargins"><label>Location</label><input type="text" ng-model="searchArea" class="addedMargins md-input-focused md-input-has-value" md-autofocus="autofocus"><md-icon><i class="material-icons" style="display:inline-block;">edit_location</i></md-icon></md-input-container>',
       link: function(scope, iElement, iAttrs) {
 
         // Setup Google Auto-complete Service
@@ -142,7 +143,8 @@ angular.module('angularTestApp')
         console.log(el)
         console.log("el value is", el[0].value.length)
         if(!el[0].value || el[0].value.length <= 0){
-        el.val(results[1].formatted_address)
+        //el.val(results[1].formatted_address)
+        scope.searchArea=results[1].formatted_address;
         console.log("ELEMENT", el)
         }
         console.log(el[0].value)

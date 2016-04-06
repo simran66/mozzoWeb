@@ -53,42 +53,56 @@
     </div> -->
 
 
-<md-tabs md-swipe-content="true" class="tabbed">
+<md-tabs md-swipe-content="true" class="tabbed" md-stretch-tabs="always">
   <md-tab ng-repeat="category in categories" md-on-select="onTabSelected(tab)">
     <md-tab-label>
       {{category.name}}
     </md-tab-label>
     <md-tab-body>
-             <div class="itemsContainer" layout="row" layout-margin="20px"  >
 <!-- <md-virtual-repeat-container id="vertical-container" md-top-index="userSelect.topIndex" flex-gt-sm="70" flex-sm="99" flex-xs="99" > -->
-      <md-list flex-gt-sm="70" flex-md="70" flex-sm="90" flex-xs="90">
-        <md-list-item ng-repeat="item in category.items"
-            class="md-3-line" ng-class="{'highlightItem':hovering}"
+<!--       <md-list flex>
+ -->
+<!--       <md-list flex-gt-sm="70" flex-md="70" flex-sm="90" flex-xs="90">
+
+ -->        
+<!-- <div ng-repeat="item in category.items"
+            class="md-3-line row" ng-class="{'highlightItem':hovering}"
     ng-mouseenter="hovering=true"
-    ng-mouseleave="hovering=false" >
+    ng-mouseleave="hovering=false" 
+    class="placeContainer col-md-8">
+ <md-list-item>
    <img ng-if="item.image != null"   src="{{item.image}}" class="md-avatar"></img>
-    <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="md-avatar"></img>          
-  <div class="md-list-item-text" layout="column">
+    <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="md-avatar">
+  </img>          
+  <div class="md-list-item-text" layout="column" layout-wrap class="col-md-8">
    <md-text-float class="itemName">{{item.name}}</md-text-float>
-   <p><span>Price: <i class="fa fa-inr"></i>
-   </span>{{item.price}}</p>
-   <p ng-if="item.price_half > 0"><span>Price-Half: <i class="fa fa-inr"></i>
+   <p>{{item.description || 'The Item description is not available at the moment.' }}</p> -->
+   <!-- <p><span>Price: <i class="fa fa-inr"></i>
+   </span>{{item.price}}</p> -->
+   <!-- <p ng-if="item.price_half > 0"><span>Price-Half: <i class="fa fa-inr"></i>
    </span>{{item.price_half}}
-   </p>
-  </div>
+   </p> -->
+<!--   </div>
+ -->
+ <!-- <md-button animate-element class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="openTab(item, $event)" ng-if="item.price_half !== null || 0 || undefined">
+    <md-icon ><i class="material-icons">add_circle</i></md-icon>
+  </md-button> -->
 
- <md-button animate-element class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="openTab(item, $event)" ng-if="item.price_half !== null || 0 || undefined">
-    <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
+     <!--    </md-list-item>
+        <div class="md-secondary" flex="30" class="col-md-4">
+   <md-button  animate-element class="md-icon-button" aria-label="addItemToCart" ng-click="addItemToCart(item)">
+    <md-icon ><i class="material-icons">add_circle</i></md-icon>
+  </md-button><i class="fa fa-inr"></i>
+   <span>{{item.price}}</span>
+    <md-button  animate-element class="md-icon-button" aria-label="addItemToCart" ng-click="deleteItemFromCart(item)">
+    <md-icon ><i class="material-icons">remove_circle_outline</i></md-icon>
   </md-button>
-
-   <md-button  animate-element ng-if="item.price_half=== null || 0 || undefined" class="md-icon-button md-secondary" aria-label="addItemToCart" ng-click="addItemToCart(item)">
-    <md-icon class="md-primary md-hue-3"><i class="material-icons">add_circle</i></md-icon>
-  </md-button>
-        </md-list-item>
-      </md-list>
+</div>
+</div>
+      </md-list> -->
 <!--       </md-virtual-repeat-container>
  -->   
-<div hide-xs hide-sm show-md show-gt-md flex>
+<!-- <div hide-xs hide-sm show-md show-gt-md flex>
            <div ng-include src=" 'components/cart/cart.html' ">
            </div>
        <md-button  animate-element ng-if="cart.length > 0" class="md-primary md-raised btn-block md-cornered" aria-label="ProceedToChecout" ng-click="proceedToCheckOut()">
@@ -100,12 +114,77 @@
        <md-button  animate-element ng-click="proceedToCheckOut()" animate-on-change="cart.length"class="md-fab" aria-label="Cart">
             <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{cart.length}}</span>
         </md-button>
-    </div>
+    </div> -->
 
+     <!-- <md-fab-toolbar md-open="false" count="1"
+                  md-direction="left">
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon><i class="material-icons">menu</i></md-icon>
+      </md-button>
+    </md-fab-trigger>
+    <md-toolbar>
+        <md-input-container>
+          <input type="text">
+          </md-input-container>        
+    </md-toolbar>
+  </md-fab-toolbar> -->
 
+<div class="itemsContainer">
+
+      <md-button  animate-element ng-click="proceedToCheckOut()" animate-on-change="OrderBill.sumOfItems"class="md-fab md-fab-bottom-right" aria-label="Cart">
+            <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{OrderBill.sumOfItems}}</span>
+        </md-button>
+<md-list class="md-3-line row" layout="column">
+<div ng-repeat="item in category.items"
+    ng-class="{'highlightItem':hovering}"
+    ng-mouseenter="hovering=true"
+    ng-mouseleave="hovering=false" >
+
+ <md-list-item animate-element class="col col-md-8" >
+   <img ng-if="item.image != null"   src="{{item.image}}" class="md-avatar"></img>
+    <img ng-if="item.image == null"  src="assets/images/mozzo.svg" class="md-avatar">
+    </img>          
+  <div class="md-list-item-text" layout="column" class="col col-md-8">
+   <md-text-float class="itemName">{{item.name}}</md-text-float>
+   <p>{{item.description || 'The Item description is not available at the moment.' }}</p>
   </div>
+   </md-list-item>
+   <div  class="col col-md-4" align="right">
+   <md-button  animate-element class="md-icon-button" aria-label="addItemToCart" ng-click="addItemToCart(item)">
+    <md-icon ><i class="material-icons">add_circle</i></md-icon>
+  </md-button><i class="fa fa-inr"></i>
+   <span>{{item.price}}</span>
+    <md-button  animate-element class="md-icon-button" aria-label="addItemToCart" ng-click="deleteItemFromCart(item)">
+    <md-icon ><i class="material-icons">remove_circle_outline</i></md-icon>
+  </md-button>
+</div>
+</div>
+</md-list>
+</div>
+
+<!--  <div show-xs show-sm hide-md hide-lg flex class="cartFabIcon" >
+       <md-button  animate-element ng-click="proceedToCheckOut()" animate-on-change="cart.length"class="md-fab" aria-label="Cart">
+            <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{cart.length}}</span>
+        </md-button>
+    </div> -->
+
+
+
+
+
+ <!--  <div  class="col col-md-4">
+   <md-button  animate-element class="md-icon-button" aria-label="addItemToCart" ng-click="addItemToCart(item)">
+    <md-icon ><i class="material-icons">add_circle</i></md-icon>
+  </md-button><i class="fa fa-inr"></i>
+   <span>{{item.price}}</span>
+    <md-button  animate-element class="md-icon-button" aria-label="addItemToCart" ng-click="deleteItemFromCart(item)">
+    <md-icon ><i class="material-icons">remove_circle_outline</i></md-icon>
+  </md-button>
+</div> -->
     </md-tab-body>
   </md-tab>
+ 
 
   
 </md-tabs>

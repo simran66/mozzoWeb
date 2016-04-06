@@ -54,15 +54,8 @@
    <md-list>
   <md-list-item ng-repeat="item in cart" class="secondary-button-padding cartItemLIst" layout="row">
   <p flex="33" layout-wrap>{{item.name}}<span ng-if="item.isHalf">[Half]</span><p>
-    <div flex="66"> 
-      <div class="subButton" >
-        <md-button class="md-icon-button md-secondary" aria-label="removeItemToCart" ng-click="deleteItemFromCart(item)">
-    <md-icon class="md-default">
-    <i class="material-icons">remove_circle_outline</i>
-  </md-icon>
-  </md-button>
-  </div>
-    <md-text-float layout="row" flex='40'><span>{{item.quantity}}</span>
+    <div flex="66" align="right"> 
+    <md-text-float layout="row"><span>{{item.quantity}}</span>
      <span class="red">X {{item.priceForItem}}</span>=<span class="finalAmount">{{item.quantity* item.priceForItem}}</span>
    </md-text-float>
 
