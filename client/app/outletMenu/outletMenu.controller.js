@@ -28,7 +28,7 @@ angular.module('angularTestApp')
 
  var init= function(){
          var id = getOutletMenu.getId();
-         var res = getOutletMenu.getMenu().get({place: id});
+         var res = getOutletMenu.getMenu().get({place: 3});
          $scope.items=[];
          console.log("resource is", res)
          $scope.userSelect={'selectedCategory': 0, 'topIndex': 0};

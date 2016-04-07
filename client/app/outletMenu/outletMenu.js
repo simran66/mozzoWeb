@@ -7,6 +7,6 @@ angular.module('angularTestApp')
         url: '/outletMenu/:outletId/menu',
         templateUrl: 'app/outletMenu/outletMenu.html',
         controller: 'OutletMenuCtrl',
-        authenticate: false
+        authenticate: true
       });
   });

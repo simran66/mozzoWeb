@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('angularTestApp')
-  .controller('LoginCtrl', function ($scope, Auth, $location, $auth, $rootScope) {
+  .controller('LoginCtrl', function ($scope, Auth, $location, $auth, $rootScope, $state, $http) {
     $scope.user = {};
     $scope.errors = {};
 
@@ -37,14 +37,14 @@ angular.module('angularTestApp')
           password: $scope.user.password
         })
         .then(function(response) {
-         // toastr.success('You have successfully signed in!');
          $auth.setToken(response.data.key)
-         console.log($auth.getToken())
-         console.log("logged In", response)
-          $location.path('/');
+         $http.defaults.headers.common['Authorization'] = 'Token ' + $auth.getToken();
+         $state.go('outletMenu', {outletId: 3})
+//location.path('/signup')
         })
         .catch(function(error) {
           //toastr.error(error.data.message, error.status);
+          console.log("er", error)
         });
     };
 

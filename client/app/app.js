@@ -109,15 +109,20 @@ $authProvider.google({
     };
   })
 
-  .run(function ($rootScope, $location, Auth) {
+  .run(function ($rootScope, $location, Auth, $auth) {
     // Redirect to login if route requires auth and you're not logged in
     $rootScope.$on('$stateChangeStart', function (event, next) {
-      Auth.isLoggedInAsync(function(loggedIn) {
-        if (next.authenticate && !loggedIn) {
-          event.preventDefault();
-          $location.path('/login');
-        }
-      });
+      // Auth.isLoggedInAsync(function(loggedIn) {
+      //   if (next.authenticate && !loggedIn) {
+      //     event.preventDefault();
+      //     $location.path('/login');
+      //   }
+      // });
+
+    if(!$auth.isAuthenticated() && next.authenticate){
+       event.preventDefault();
+         $location.path('/login');
+    }
     });
   })
 
@@ -161,4 +166,17 @@ $authProvider.google({
         
       })   
     }
-  });
+  })
+// .directive('animateRandom', function ($animate, $timeout, $animateCss) {
+//     return function (scope, element, attrs) {
+     
+//  var id = Math.floor((Math.random() * 5)+ 1);
+//   var el = "#\\".concat(id)
+
+//  element[0].querySelector(el).addClass('animated zoomIn')
+
+
+
+    
+//   }
+// })

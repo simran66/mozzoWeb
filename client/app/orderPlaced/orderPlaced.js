@@ -6,6 +6,9 @@ angular.module('angularTestApp')
       .state('orderPlaced', {
         url: '/orderPlaced',
         templateUrl: 'app/orderPlaced/orderPlaced.html',
-        controller: 'OrderPlacedCtrl'
+        controller: 'OrderPlacedCtrl',
+        authenticate: true
+
+
       });
   });
