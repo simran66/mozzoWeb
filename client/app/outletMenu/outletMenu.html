@@ -51,7 +51,9 @@
         </md-button>
     </div>
     </div> -->
-
+<md-button  animate-element ng-click="proceedToCheckOut()" animate-on-change="OrderBill.sumOfItems"class="md-fab md-fab-bottom-right" aria-label="Cart">
+            <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{OrderBill.sumOfItems}}</span>
+        </md-button>
 
 <md-tabs md-swipe-content="true" class="tabbed" md-stretch-tabs="always">
   <md-tab ng-repeat="category in categories" md-on-select="onTabSelected(tab)">
@@ -130,11 +132,12 @@
     </md-toolbar>
   </md-fab-toolbar> -->
 
+
+ 
+        
 <div class="itemsContainer">
 
-      <md-button  animate-element ng-click="proceedToCheckOut()" animate-on-change="OrderBill.sumOfItems"class="md-fab md-fab-bottom-right" aria-label="Cart">
-            <md-icon><i class="material-icons">add_shopping_cart</i></md-icon><span class="cartText">{{OrderBill.sumOfItems}}</span>
-        </md-button>
+     
 <md-list class="md-3-line row" layout="column">
 <div ng-repeat="item in category.items"
     ng-class="{'highlightItem':hovering}"

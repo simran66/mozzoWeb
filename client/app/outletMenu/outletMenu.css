@@ -18,7 +18,8 @@
 
 
 .md-button.md-fab.md-fab-bottom-right {
-  bottom: 60px !important;
+/*  bottom: 60px !important;
+*/  position: fixed !important;
 }
 .itemsContainer{
   margin: 10px;

@@ -15,6 +15,20 @@
     url('../bower_components/bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
+#loading-bar .bar {
+background: #fff;
+height: 2px;
+}
+
+#loading-bar-spinner .spinner-icon {
+width: 18px;
+height: 18px;
+border: solid 3px transparent;
+border-top-color: #fff;
+border-left-color: #fff;
+border-radius: 10px;
+}
+
 /**
  *Font Awesome Fonts
  */

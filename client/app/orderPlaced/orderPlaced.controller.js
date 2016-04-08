@@ -10,7 +10,7 @@ $scope.startTimeOut= function(){
     $timeout(function() {
       $scope.lessThanSixty= false;
       console.log("timed out");
-      $state.go('outletMenu');
+      $state.go('home');
     }, 60*1000);
 
 }
@@ -31,7 +31,7 @@ var confirm=$mdDialog.confirm()
           .cancel('Cancel');
     $mdDialog.show(confirm).then(function() {
       cart.emptyCart();
-      $state.go('main');
+      $state.go('home');
     }, function() {
          $scope.startTimeOut();
     });

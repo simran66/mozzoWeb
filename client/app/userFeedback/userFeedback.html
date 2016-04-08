@@ -1,0 +1,253 @@
+<!-- <div class="col-md-12">
+This is the userFeedback view.
+</div> -->
+
+<div class="header flex" text-align="center"> <span class="headerText">We value your opinion</span></div>
+
+
+<div class="formArea">
+		
+         <div class="ques">
+		<label class="highlight">Where did you get to know about the movies playing at Wave Cinemas ?</label>
+
+  <div layout="column" layout-gt-sm="row">
+  	<div flex="33">
+  	  <input id='one' type='checkbox' />
+  <label for='one'>
+    <span></span>
+    Newspaper
+    <ins><i>Newspaper</i></ins>
+  </label>
+</div>
+
+<div flex="33">
+  	  <input id='two' type='checkbox' />
+  <label for='two'>
+    <span></span>
+       Website    
+    <ins><i>Website</i></ins>
+  </label>
+</div>
+
+<div flex="33">
+  	  <input id='three' type='checkbox' />
+  <label for='three'>
+    <span></span>
+     Social Media    
+     <ins><i>Social Media</i></ins>
+  </label>
+</div>
+  </div>
+
+
+<div class="other">
+  <md-input-container ><label>Others:</label>
+    <span flex><input type="text"></input></span>
+</md-input-container>
+</div>
+  
+  </div>
+
+  <div class="ques">
+  	<label class="highlight">Mode of booking?</label>
+
+
+
+  	 <div layout="row">
+  	<div flex="50">
+  	  <input id='web' type='checkbox' />
+  <label for='web'>
+    <span></span>
+           Website<ins><i>Website</i></ins>
+  </label>
+</div>
+
+<div flex="50">
+  	  <input id='ticket' type='checkbox' />
+  <label for='ticket'>
+    <span></span>
+Ticket Window   
+ <ins><i>Ticket Window</i></ins>
+  </label>
+</div>
+
+
+  </div>
+</div>
+
+<div class="ques">
+	<label class="highlight">Rate your experience </label>
+
+	<div layout="row" class="ratings">
+		<span flex="30" class="labelText">Box office: </span>
+		<span flex="70" class="listStars">
+  <input class="star star-5" id="star-5" type="radio" name="star" ng-model="boxOffice.rating" value="5"/>
+  <label class="star star-5" for="star-5"></label>
+  <input class="star star-4" id="star-4" type="radio" name="star" ng-model="boxOffice.rating" value="4"/>
+  <label class="star star-4" for="star-4"></label>
+  <input class="star star-3" id="star-3" type="radio" name="star" ng-model="boxOffice.rating" value="3"/>
+  <label class="star star-3" for="star-3"></label>
+  <input class="star star-2" id="star-2" type="radio" name="star" ng-model="boxOffice.rating" value="2"/>
+  <label class="star star-2" for="star-2"></label>
+  <input class="star star-1" id="star-1" type="radio" name="star" ng-model="boxOffice.rating" value="1"/>
+  <label class="star star-1" for="star-1"></label>
+
+
+		</span>
+	</div>
+</div>
+
+
+	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Security Measures: </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="sec-5" type="radio" name="securityMeasures" ng-model="securityMeasures.rating" value="5"/>
+  <label class="star star-5" for="sec-5"></label>
+  <input class="star star-4" id="sec-4" type="radio" name="securityMeasures" ng-model="securityMeasures.rating" value="4"/>
+  <label class="star star-4" for="sec-4"></label>
+  <input class="star star-3" id="sec-3" type="radio" name="securityMeasures" ng-model="securityMeasures.rating" value="3"/>
+  <label class="star star-3" for="sec-3"></label>
+  <input class="star star-2" id="sec-2" type="radio" name="securityMeasures" ng-model="securityMeasures.rating" value="2"/>
+  <label class="star star-2" for="sec-2"></label>
+  <input class="star star-1" id="sec-1" type="radio" name="securityMeasures" ng-model="securityMeasures.rating" value="1"/>
+  <label class="star star-1" for="sec-1"></label>
+
+
+		</span>
+	</div>
+
+
+	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Lobby Area: </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="lob-5" type="radio" name="lobbyArea" ng-model="lobbyArea.rating" value="5"/>
+  <label class="star star-5" for="lob-5"></label>
+  <input class="star star-4" id="lob-4" type="radio" name="lobbyArea" ng-model="lobbyArea.rating" value="4"/>
+  <label class="star star-4" for="lob-4"></label>
+  <input class="star star-3" id="lob-3" type="radio" name="lobbyArea" ng-model="lobbyArea.rating" value="3"/>
+  <label class="star star-3" for="lob-3"></label>
+  <input class="star star-2" id="lob-2" type="radio" name="lobbyArea" ng-model="lobbyArea.rating" value="2"/>
+  <label class="star star-2" for="lob-2"></label>
+  <input class="star star-1" id="lob-1" type="radio" name="lobbyArea" ng-model="lobbyArea.rating" value="1"/>
+  <label class="star star-1" for="lob-1"></label>
+
+
+		</span>
+	</div>
+
+
+	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Spray cafe: </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="spray-5" type="radio" name="sprayCafe" ng-model="sprayCafe.rating" value="5"/>
+  <label class="star star-5" for="spray-5"></label>
+  <input class="star star-4" id="spray-4" type="radio" name="sprayCafe" ng-model="sprayCafe.rating" value="4"/>
+  <label class="star star-4" for="spray-4"></label>
+  <input class="star star-3" id="spray-3" type="radio" name="sprayCafe" ng-model="sprayCafe.rating" value="3"/> 
+  <label class="star star-3" for="spray-3"></label>
+  <input class="star star-2" id="spray-2" type="radio" name="sprayCafe" ng-model="sprayCafe.rating" value="2"/>
+  <label class="star star-2" for="spray-2"></label>
+  <input class="star star-1" id="spray-1" type="radio" name="sprayCafe" ng-model="sprayCafe.rating" value="1"/>
+  <label class="star star-1" for="spray-1"></label>
+
+
+		</span>
+	</div>
+
+	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Auditoriums: </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="audi-5" type="radio" name="audi" ng-model="audi.rating" value="5"/>
+  <label class="star star-5" for="audi-5"></label>
+  <input class="star star-4" id="audi-4" type="radio" name="audi" ng-model="audi.rating" value="4"/>
+  <label class="star star-4" for="audi-4"></label>
+  <input class="star star-3" id="audi-3" type="radio" name="audi"  ng-model="audi.rating" value="3"/>
+  <label class="star star-3" for="audi-3"></label>
+  <input class="star star-2" id="audi-2" type="radio" name="audi" ng-model="audi.rating" value="2"/>
+  <label class="star star-2" for="audi-2"></label>
+  <input class="star star-1" id="audi-1" type="radio" name="audi" ng-model="audi.rating" value="1"/>
+  <label class="star star-1" for="audi-1"></label>
+
+
+		</span>
+	</div>
+
+	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Washrooms: </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="washrooms-5" type="radio" name="washrooms" ng-model="washrooms.rating" value="5"/>
+  <label class="star star-5" for="washrooms-5"></label>
+  <input class="star star-4" id="washrooms-4" type="radio" name="washrooms" ng-model="washrooms.rating" value="4"/>
+  <label class="star star-4" for="washrooms-4"></label>
+  <input class="star star-3" id="washrooms-3" type="radio" name="washrooms" ng-model="washrooms.rating" value="3"/>
+  <label class="star star-3" for="washrooms-3"></label>
+  <input class="star star-2" id="washrooms-2" type="radio" name="washrooms" ng-model="washrooms.rating" value="2"/>
+  <label class="star star-2" for="washrooms-2"></label>
+  <input class="star star-1" id="washrooms-1" type="radio" name="washrooms" ng-model="washrooms.rating" value="1"/>
+  <label class="star star-1" for="washrooms-1"></label>
+
+
+		</span>
+	</div>
+
+	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Security Measures: </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="sec-5" type="radio" name="measures" ng-model="measures.rating" value="5"/>
+  <label class="star star-5" for="sec-5"></label>
+  <input class="star star-4" id="sec-4" type="radio" name="measures" ng-model="measures.rating" value="4"/>
+  <label class="star star-4" for="sec-4"></label>
+  <input class="star star-3" id="sec-3" type="radio" name="measures" ng-model="measures.rating" value="3"/>
+  <label class="star star-3" for="sec-3"></label>
+  <input class="star star-2" id="sec-2" type="radio" name="measures" ng-model="measures.rating" value="2"/>
+  <label class="star star-2" for="sec-2"></label>
+  <input class="star star-1" id="sec-1" type="radio" name="measures" ng-model="measures.rating" value="1"/>
+  <label class="star star-1" for="sec-1"></label>
+
+
+		</span>
+	</div>
+
+
+	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Pricing : </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="sec-5" type="radio" name="pricing"  ng-model="pricing.rating" value="5"/>
+  <label class="star star-5" for="sec-5"></label>
+  <input class="star star-4" id="sec-4" type="radio" name="pricing"  ng-model="pricing.rating" value="4"/>
+  <label class="star star-4" for="sec-4"></label>
+  <input class="star star-3" id="sec-3" type="radio" name="pricing"  ng-model="pricing.rating" value="3"/>
+  <label class="star star-3" for="sec-3"></label>
+  <input class="star star-2" id="sec-2" type="radio" name="pricing"  ng-model="pricing.rating" value="2"/>
+  <label class="star star-2" for="sec-2"></label>
+  <input class="star star-1" id="sec-1" type="radio" name="pricing"  ng-model="pricing.rating" value="1"/>
+  <label class="star star-1" for="sec-1"></label>
+
+
+		</span>
+	</div>
+
+
+<!-- 	<div class="ratings" layout="row">
+		<span flex="30" class="labelText">Print & Sound: </span>
+		<span flex="70" cass="listStars">
+   <input class="star star-5" id="sec-5" type="radio" name="printing" ng-model="printing.rating" value="5"/>
+  <label class="star star-5" for="sec-5"></label>
+  <input class="star star-4" id="sec-4" type="radio" name="printing" ng-model="printing.rating" value="4"/>
+  <label class="star star-4" for="sec-4"></label>
+  <input class="star star-3" id="sec-3" type="radio" name="printing" ng-model="printing.rating" value="3"/>
+  <label class="star star-3" for="sec-3"></label>
+  <input class="star star-2" id="sec-2" type="radio" name="printing" ng-model="printing.rating" value="2"/>
+  <label class="star star-2" for="sec-2"></label>
+  <input class="star star-1" id="sec-1" type="radio" name="printing" ng-model="printing.rating" value="1"/>
+  <label class="star star-1" for="sec-1"></label>
+
+
+		</span>
+	</div> -->
+
+
+
+</div>
+<md-button type="submit" ui-sref="home" animate-element class="md-raised md-primary md-hue-1 btn-block">Submit Feedback</md-button>
+

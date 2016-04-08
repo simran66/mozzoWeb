@@ -18,12 +18,16 @@ angular.module('angularTestApp', [
 'ui.bootstrap.timepicker',
 'dnTimepicker',
 'ngStorage',
-'ngCurtain'
+'ngCurtain',
+'angular-loading-bar'
 ])
-  .config(function ($stateProvider,  $resourceProvider, $authProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider) {
+  .config(function ($stateProvider,  $resourceProvider, $authProvider, $urlRouterProvider, $locationProvider, $httpProvider, $mdThemingProvider, cfpLoadingBarProvider) {
     $urlRouterProvider
       .otherwise('/');
     $httpProvider.interceptors.push('authInterceptor');
+    $httpProvider.interceptors.push('LoadingInterceptor');
+        cfpLoadingBarProvider.parentSelector = '#loading-bar-container';
+
 
      $locationProvider.html5Mode(true);
       $resourceProvider.defaults.stripTrailingSlashes = false;
@@ -139,19 +143,6 @@ $authProvider.google({
 })
     }
   })
-// .directive('animateElement', ['$animate','$timeout',
-//     function ($animate, $timeout) {
-//         return function (scope, elem, attrs) {
-//             elem.bind("mouseover", function(hover) {
-//               if (hover) 
-//                   $animate.addClass(elem, 'animated zoomIn');
-//               else 
-//                   $animate.removeClass(elem, 'animated zoomIn');   
-//             }
-//           }
-
-// }]);
-
 .directive('animateElement', function ($animate, $timeout) {
     return function (scope, element, attrs) {
       console.log("element directive")
@@ -166,7 +157,46 @@ $authProvider.google({
         
       })   
     }
-  })
+  }).service('LoadingInterceptor', ['$q', '$rootScope', '$log', 
+function ($q, $rootScope, $log) {
+    'use strict';
+ 
+    var xhrCreations = 0;
+    var xhrResolutions = 0;
+ 
+    function isLoading() {
+        return xhrResolutions < xhrCreations;
+    }
+ 
+    function updateStatus() {
+        $rootScope.loading = isLoading();
+    }
+ 
+    return {
+        request: function (config) {
+            xhrCreations++;
+            updateStatus();
+            return config;
+        },
+        requestError: function (rejection) {
+            xhrResolutions++;
+            updateStatus();
+            $log.error('Request error:', rejection);
+            return $q.reject(rejection);
+        },
+        response: function (response) {
+            xhrResolutions++;
+            updateStatus();
+            return response;
+        },
+        responseError: function (rejection) {
+            xhrResolutions++;
+            updateStatus();
+            $log.error('Response error:', rejection);
+            return $q.reject(rejection);
+        }
+    };
+}]);
 // .directive('animateRandom', function ($animate, $timeout, $animateCss) {
 //     return function (scope, element, attrs) {
      
